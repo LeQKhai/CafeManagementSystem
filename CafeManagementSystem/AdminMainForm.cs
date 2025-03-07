@@ -19,7 +19,23 @@ namespace CafeManagementSystem
 
         private void close_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Bạn có muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+
+            }
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            DialogResult check = MessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (check == DialogResult.Yes)
+            {
+                Form1 loginform = new Form1();
+                loginform.Show();
+                this.Hide();
+            }
         }
     }
 }
