@@ -10,8 +10,8 @@ namespace CafeManagementSystem
 {
     internal class AdminAddUsersData
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\PC\Documents\cafe.mdf;Integrated Security=True;Connect Timeout=30");
-        
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
+
         public int ID { get; set; }
         public string Username {  get; set; }
         public string Password { get; set; }
