@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAddProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminAddProducts.Designer.cs">
+      <DependentUpon>AdminAddProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminAddUsers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminAddProducts.resx">
+      <DependentUpon>AdminAddProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminAddUsers.resx">
       <DependentUpon>AdminAddUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="User_Directory\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\coffee.png" />
