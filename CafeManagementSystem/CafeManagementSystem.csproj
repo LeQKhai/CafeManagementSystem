@@ -315,10 +315,7 @@
   <ItemGroup>
     <None Include="Assets\visible.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="User_Directory\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Assets\coffee.png" />
   </ItemGroup>
@@ -336,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\database.sql" />
+    <Content Include="User_Directory\Trollface.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
