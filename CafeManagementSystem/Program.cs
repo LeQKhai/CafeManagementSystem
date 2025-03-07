@@ -16,6 +16,8 @@ namespace CafeManagementSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Gọi hàm đảm bảo database tồn tại trước khi chạy ứng dụng
+            DatabaseSetup.EnsureDatabaseExists();
             Application.Run(new Form1());
         }
     }
