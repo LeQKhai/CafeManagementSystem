@@ -16,7 +16,7 @@ namespace CafeManagementSystem
 {
     public partial class AdminAddProducts : UserControl
     {
-        SqlConnection connect= new SqlConnection(@"");
+        SqlConnection connect= new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
         public AdminAddProducts()
         {
             InitializeComponent();

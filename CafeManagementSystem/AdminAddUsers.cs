@@ -16,7 +16,7 @@ namespace CafeManagementSystem
 {
     public partial class AdminAddUsers : UserControl
     {
-        SqlConnection connect = new SqlConnection(@"");
+        SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
 
         public AdminAddUsers()
         {
@@ -79,9 +79,9 @@ namespace CafeManagementSystem
                                 "VALUES(@usern, @pass, @image, @role, @status, @date)";
 
                                 DateTime today = DateTime.Today;
-
-                                string path = Path.Combine(@"E:\CafeManagementSystem\CafeManagementSystem\User_Directory\"
-                                + adminAddUsers_username.Text.Trim()+".jpg");
+                                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                                string userDir = Path.Combine(basePath, "User_Directory");
+                                string path = Path.Combine(userDir, adminAddUsers_username.Text.Trim()+".jpg");
 
                                 string directoryPath= Path.GetDirectoryName(path);
 
