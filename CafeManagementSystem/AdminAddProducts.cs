@@ -20,6 +20,9 @@ namespace CafeManagementSystem
         public AdminAddProducts()
         {
             InitializeComponent();
+
+            displayData();
+
         }
 
         public bool emptyFields()
@@ -33,6 +36,14 @@ namespace CafeManagementSystem
             {
                 return false;
             }
+        }
+
+        public void displayData()
+        {
+            AdminAddProductsData prodData = new AdminAddProductsData();
+            List<AdminAddProductsData> listData = prodData.productsListData();
+
+            dataGridView1.DataSource = listData;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -109,18 +120,18 @@ namespace CafeManagementSystem
 
                                 DateTime today = DateTime.Today;
 
-                                //string path = Path.Combine(@"E:\CafeManagementSystem\CafeManagementSystem\User_Directory\"
-                                //+ adminAddUsers_username.Text.Trim() + ".jpg");
+                                string path = Path.Combine(@"E:\CafeManagementSystem\CafeManagementSystem\Product_Directory\"
+                                + adminAddProducts_id.Text.Trim() + ".jpg");
 
-                                //string directoryPath = Path.GetDirectoryName(path);
+                                string directoryPath = Path.GetDirectoryName(path);
 
-                                //if (!Directory.Exists(directoryPath))
-                                //{
-                                //    Directory.CreateDirectory(directoryPath);
+                                if (!Directory.Exists(directoryPath))
+                                {
+                                    Directory.CreateDirectory(directoryPath);
 
-                                //}
+                                }
 
-                                //File.Copy(adminAddUsers_imageView.ImageLocation, path, true);
+                                File.Copy(adminAddProducts_imageView.ImageLocation, path, true);
 
 
 
@@ -132,16 +143,16 @@ namespace CafeManagementSystem
                                     cmd.Parameters.AddWithValue("@prodStock", adminAddProducts_stock.Text.Trim());
                                     cmd.Parameters.AddWithValue("@prodPrice", adminAddProducts_price.Text.Trim());
                                     cmd.Parameters.AddWithValue("@prodStatus", adminAddProducts_status.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodImage", "image path");
+                                    cmd.Parameters.AddWithValue("@prodImage", path);
                                     cmd.Parameters.AddWithValue("@dateInsert", today);
 
                                     cmd.ExecuteNonQuery();
 
-                                    //clearFields();
+                                    clearFields();
 
-                                    //MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    //displayAddUsersData();
+                                    displayData();
 
                                 }
                             }
@@ -177,6 +188,172 @@ namespace CafeManagementSystem
             {
 
                 MessageBox.Show("Lỗi: " + ex, "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void clearFields()
+        {
+            adminAddProducts_id.Text = "";
+            adminAddProducts_name.Text = "";
+            adminAddProducts_type.SelectedIndex = -1;
+            adminAddProducts_stock.Text = "";
+            adminAddProducts_price.Text = "";
+            adminAddProducts_status.SelectedIndex = -1;
+            adminAddProducts_imageView.Image = null;
+
+        }
+
+        private void adminAddProducts_clearBtn_Click(object sender, EventArgs e)
+        {
+            clearFields();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                adminAddProducts_id.Text= row.Cells[1].Value.ToString();
+                adminAddProducts_name.Text = row.Cells[2].Value.ToString();
+                adminAddProducts_type.Text = row.Cells[3].Value.ToString();
+                adminAddProducts_stock.Text = row.Cells[4].Value.ToString();
+                adminAddProducts_price.Text = row.Cells[5].Value.ToString();
+                adminAddProducts_status.Text = row.Cells[6].Value.ToString();
+
+                string imagepath = row.Cells[7].Value.ToString();
+
+                try
+                {
+                    if (imagepath != null)
+                    {
+                        adminAddProducts_imageView.Image = Image.FromFile(imagepath);
+                    }
+                    else
+                    {
+                        adminAddProducts_imageView.Image = null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi hình ảnh: " + ex, "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                }
+            }
+        }
+
+        private void adminAddProducts_updateBtn_Click(object sender, EventArgs e)
+        {
+            if (emptyFields())
+            {
+                MessageBox.Show("Hãy điền đầy đủ tất cả thông tin!", "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult check = MessageBox.Show("Bạn có chắc chắn muốn cập nhật Product ID: " + adminAddProducts_id.Text.Trim()
+                    + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (check == DialogResult.Yes)
+                {
+                    if (connect.State != ConnectionState.Open)
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string updateData = "UPDATE products SET prod_name= @prodName, prod_type= @prodType, prod_stock= @prodStock, prod_price= @prodPrice, " +
+                                "prod_status= @prodStatus, date_update= @dateUpdate WHERE prod_id= @prodID";
+
+                            DateTime today = DateTime.Now;
+
+                            using (SqlCommand updateD = new SqlCommand(updateData, connect))
+                            {
+                                updateD.Parameters.AddWithValue("@prodName", adminAddProducts_name.Text.Trim());
+                                updateD.Parameters.AddWithValue("@prodType", adminAddProducts_type.Text.Trim());
+                                updateD.Parameters.AddWithValue("@prodStock", adminAddProducts_stock.Text.Trim());
+                                updateD.Parameters.AddWithValue("@prodPrice", adminAddProducts_price.Text.Trim());
+                                updateD.Parameters.AddWithValue("@prodStatus", adminAddProducts_status.Text.Trim());
+                                updateD.Parameters.AddWithValue("@dateUpdate", today);
+                                updateD.Parameters.AddWithValue("@prodID", adminAddProducts_id.Text.Trim());
+
+                                updateD.ExecuteNonQuery();
+
+                                clearFields();
+
+                                MessageBox.Show("Cập nhật hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                displayData();
+
+
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show("Kết nối thất bại " + ex, "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+
+                    }
+                }
+
+            }
+        }
+
+        private void adminAddProducts_deleteBtn_Click(object sender, EventArgs e)
+        {
+            if (emptyFields())
+            {
+                MessageBox.Show("Hãy điền đầy đủ tất cả thông tin!", "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult check = MessageBox.Show("Bạn có chắc chắn muốn xóa Product ID: " + adminAddProducts_id.Text.Trim()
+                    + "?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (check == DialogResult.Yes)
+                {
+                    if (connect.State != ConnectionState.Open)
+                    {
+                        try
+                        {
+                            connect.Open();
+
+                            string updateData = "UPDATE products SET date_delete= @dateDelete WHERE prod_id= @prodID";
+
+                            DateTime today = DateTime.Now;
+
+                            using (SqlCommand updateD = new SqlCommand(updateData, connect))
+                            {
+                                updateD.Parameters.AddWithValue("@dateDelete", today);
+                                updateD.Parameters.AddWithValue("@prodID", adminAddProducts_id.Text.Trim());
+
+                                updateD.ExecuteNonQuery();
+
+                                clearFields();
+
+                                MessageBox.Show("Xóa hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                displayData();
+
+
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show("Kết nối thất bại " + ex, "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            connect.Close();
+                        }
+
+                    }
+                }
+
             }
         }
     }

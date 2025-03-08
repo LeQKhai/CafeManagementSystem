@@ -43,6 +43,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
+            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
+            this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -135,6 +137,7 @@
             this.button4.TabIndex = 19;
             this.button4.Text = "Menu";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -147,6 +150,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "Thêm nhân viên";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -159,6 +163,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "Trang chủ";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -206,6 +211,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.adminDashboardForm1);
+            this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUsers1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(205, 45);
@@ -219,6 +226,21 @@
             this.adminAddUsers1.Name = "adminAddUsers1";
             this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
             this.adminAddUsers1.TabIndex = 0;
+            // 
+            // adminAddProducts1
+            // 
+            this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1295, 755);
+            this.adminAddProducts1.TabIndex = 1;
+            // 
+            // adminDashboardForm1
+            // 
+            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
+            this.adminDashboardForm1.Name = "adminDashboardForm1";
+            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
+            this.adminDashboardForm1.TabIndex = 2;
+            this.adminDashboardForm1.Load += new System.EventHandler(this.adminDashboardForm1_Load);
             // 
             // AdminMainForm
             // 
@@ -259,5 +281,7 @@
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel panel3;
         private AdminAddUsers adminAddUsers1;
+        private AdminAddProducts adminAddProducts1;
+        private AdminDashboardForm adminDashboardForm1;
     }
 }
