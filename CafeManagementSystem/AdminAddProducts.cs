@@ -119,9 +119,9 @@ namespace CafeManagementSystem
 
 
                                 DateTime today = DateTime.Today;
-
-                                string path = Path.Combine(@"E:\CafeManagementSystem\CafeManagementSystem\Product_Directory\"
-                                + adminAddProducts_id.Text.Trim() + ".jpg");
+                                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                                string userDir = Path.Combine(basePath, "Product_Directory");
+                                string path = Path.Combine(userDir, adminAddProducts_id.Text.Trim() + ".jpg");
 
                                 string directoryPath = Path.GetDirectoryName(path);
 
