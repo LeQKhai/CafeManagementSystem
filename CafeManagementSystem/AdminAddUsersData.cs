@@ -54,7 +54,7 @@ namespace CafeManagementSystem
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Connection failed: " + ex);
+                    Console.WriteLine("Kết nối thất bại: " + ex);
                 }
                 finally
                 { 
