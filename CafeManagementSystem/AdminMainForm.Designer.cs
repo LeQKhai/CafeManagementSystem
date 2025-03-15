@@ -42,9 +42,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
-            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
+            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
+            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,6 +100,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(205, 755);
             this.panel2.TabIndex = 0;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // logout_btn
             // 
@@ -220,12 +221,13 @@
             this.panel3.Size = new System.Drawing.Size(1295, 755);
             this.panel3.TabIndex = 1;
             // 
-            // adminAddUsers1
+            // adminDashboardForm1
             // 
-            this.adminAddUsers1.Location = new System.Drawing.Point(0, 0);
-            this.adminAddUsers1.Name = "adminAddUsers1";
-            this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
-            this.adminAddUsers1.TabIndex = 0;
+            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
+            this.adminDashboardForm1.Name = "adminDashboardForm1";
+            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
+            this.adminDashboardForm1.TabIndex = 2;
+            this.adminDashboardForm1.Load += new System.EventHandler(this.adminDashboardForm1_Load);
             // 
             // adminAddProducts1
             // 
@@ -234,13 +236,12 @@
             this.adminAddProducts1.Size = new System.Drawing.Size(1295, 755);
             this.adminAddProducts1.TabIndex = 1;
             // 
-            // adminDashboardForm1
+            // adminAddUsers1
             // 
-            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
-            this.adminDashboardForm1.Name = "adminDashboardForm1";
-            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
-            this.adminDashboardForm1.TabIndex = 2;
-            this.adminDashboardForm1.Load += new System.EventHandler(this.adminDashboardForm1_Load);
+            this.adminAddUsers1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddUsers1.Name = "adminAddUsers1";
+            this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
+            this.adminAddUsers1.TabIndex = 0;
             // 
             // AdminMainForm
             // 
