@@ -63,5 +63,10 @@ namespace CafeManagementSystem
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
