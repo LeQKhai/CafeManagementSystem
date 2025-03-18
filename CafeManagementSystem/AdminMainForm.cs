@@ -43,6 +43,13 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = true;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
+            cashierCustomerFrom1.Visible = false;
+
+            AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
+            if(adForm != null)
+            {
+                adForm.refreshData();
+            }
         }
 
         private void adminDashboardForm1_Load(object sender, EventArgs e)
@@ -55,6 +62,13 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = true;
             adminAddProducts1.Visible = false;
+            cashierCustomerFrom1.Visible = false;
+
+            AdminAddUsers adAddUsers = adminAddUsers1 as AdminAddUsers;
+            if(adAddUsers != null)
+            {
+                adAddUsers.refreshData();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -62,6 +76,13 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
+            cashierCustomerFrom1.Visible = false;
+
+            AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
+            if(adAddProds != null)
+            {
+                adAddProds.refreshData();
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -69,5 +90,18 @@ namespace CafeManagementSystem
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.Visible = false;
+            adminAddUsers1.Visible = false;
+            adminAddProducts1.Visible = false;
+            cashierCustomerFrom1.Visible = true;
+
+            CashierCustomerFrom cusForm = cashierCustomerFrom1 as CashierCustomerFrom;
+            if(cusForm != null)
+            {
+                cusForm.refreshData();
+            }
+        }
     }
 }

@@ -25,6 +25,16 @@ namespace CafeManagementSystem
             displayAddUsersData();
         }
 
+        public void refreshData()
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)refreshData);
+                return;
+            }
+            displayAddUsersData();
+        }
+
         public void displayAddUsersData()
         {
             AdminAddUsersData usersData = new AdminAddUsersData();

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierOrderForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.CashierOrderForm_menuTable = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,6 +58,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.CashierOrderForm_orderPrice = new System.Windows.Forms.Label();
             this.CashierOrderForm_orderTable = new System.Windows.Forms.DataGridView();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashierOrderForm_menuTable)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,14 +84,14 @@
             this.CashierOrderForm_menuTable.AllowUserToDeleteRows = false;
             this.CashierOrderForm_menuTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CashierOrderForm_menuTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashierOrderForm_menuTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CashierOrderForm_menuTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CashierOrderForm_menuTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CashierOrderForm_menuTable.EnableHeadersVisualStyles = false;
             this.CashierOrderForm_menuTable.Location = new System.Drawing.Point(27, 60);
@@ -191,9 +194,8 @@
             this.CashierOrderForm_prodName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierOrderForm_prodName.Location = new System.Drawing.Point(165, 94);
             this.CashierOrderForm_prodName.Name = "CashierOrderForm_prodName";
-            this.CashierOrderForm_prodName.Size = new System.Drawing.Size(114, 22);
+            this.CashierOrderForm_prodName.Size = new System.Drawing.Size(0, 22);
             this.CashierOrderForm_prodName.TabIndex = 19;
-            this.CashierOrderForm_prodName.Text = "Test Product";
             // 
             // label6
             // 
@@ -211,9 +213,8 @@
             this.CashierOrderForm_price.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierOrderForm_price.Location = new System.Drawing.Point(165, 143);
             this.CashierOrderForm_price.Name = "CashierOrderForm_price";
-            this.CashierOrderForm_price.Size = new System.Drawing.Size(40, 22);
+            this.CashierOrderForm_price.Size = new System.Drawing.Size(0, 22);
             this.CashierOrderForm_price.TabIndex = 17;
-            this.CashierOrderForm_price.Text = "100";
             // 
             // label3
             // 
@@ -309,6 +310,7 @@
             this.CashierOrderForm_receiptBtn.TabIndex = 25;
             this.CashierOrderForm_receiptBtn.Text = "RECEIPT";
             this.CashierOrderForm_receiptBtn.UseVisualStyleBackColor = false;
+            this.CashierOrderForm_receiptBtn.Click += new System.EventHandler(this.CashierOrderForm_receiptBtn_Click);
             // 
             // CashierOrderForm_change
             // 
@@ -365,9 +367,9 @@
             this.CashierOrderForm_orderPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CashierOrderForm_orderPrice.Location = new System.Drawing.Point(261, 417);
             this.CashierOrderForm_orderPrice.Name = "CashierOrderForm_orderPrice";
-            this.CashierOrderForm_orderPrice.Size = new System.Drawing.Size(40, 22);
+            this.CashierOrderForm_orderPrice.Size = new System.Drawing.Size(20, 22);
             this.CashierOrderForm_orderPrice.TabIndex = 19;
-            this.CashierOrderForm_orderPrice.Text = "100";
+            this.CashierOrderForm_orderPrice.Text = "0";
             // 
             // CashierOrderForm_orderTable
             // 
@@ -375,14 +377,14 @@
             this.CashierOrderForm_orderTable.AllowUserToDeleteRows = false;
             this.CashierOrderForm_orderTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CashierOrderForm_orderTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashierOrderForm_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CashierOrderForm_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.CashierOrderForm_orderTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CashierOrderForm_orderTable.EnableHeadersVisualStyles = false;
             this.CashierOrderForm_orderTable.Location = new System.Drawing.Point(27, 60);
@@ -392,6 +394,21 @@
             this.CashierOrderForm_orderTable.Size = new System.Drawing.Size(384, 315);
             this.CashierOrderForm_orderTable.TabIndex = 5;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // CashierOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,7 +417,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "CashierOrderForm";
-            this.Size = new System.Drawing.Size(1295, 800);
+            this.Size = new System.Drawing.Size(1295, 755);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashierOrderForm_menuTable)).EndInit();
@@ -442,5 +459,7 @@
         private System.Windows.Forms.Button CashierOrderForm_receiptBtn;
         private System.Windows.Forms.Label CashierOrderForm_change;
         private System.Windows.Forms.Label label13;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
