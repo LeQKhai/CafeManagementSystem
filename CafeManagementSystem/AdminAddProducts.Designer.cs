@@ -211,6 +211,7 @@
             this.adminAddProducts_imageView.Location = new System.Drawing.Point(0, 0);
             this.adminAddProducts_imageView.Name = "adminAddProducts_imageView";
             this.adminAddProducts_imageView.Size = new System.Drawing.Size(112, 132);
+            this.adminAddProducts_imageView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.adminAddProducts_imageView.TabIndex = 18;
             this.adminAddProducts_imageView.TabStop = false;
             // 

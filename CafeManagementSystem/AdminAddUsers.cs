@@ -41,6 +41,7 @@ namespace CafeManagementSystem
             List<AdminAddUsersData> listData = usersData.UsersListData();
 
             dataGridView1.DataSource = listData;
+            dataGridView1.Rows[0].Selected = false;
         }
         public bool emptyFields()
         {
@@ -85,41 +86,48 @@ namespace CafeManagementSystem
                             }
                             else
                             {
-                                string insertData = "INSERT INTO users (username, password, profile_image, role, status, date_reg)" +
+                                try
+                                {
+                                    string insertData = "INSERT INTO users (username, password, profile_image, role, status, date_reg)" +
                                 "VALUES(@usern, @pass, @image, @role, @status, @date)";
 
-                                DateTime today = DateTime.Today;
-                                string basePath = AppDomain.CurrentDomain.BaseDirectory;
-                                string userDir = Path.Combine(basePath, "User_Directory");
-                                string path = Path.Combine(userDir, adminAddUsers_username.Text.Trim()+".jpg");
+                                    DateTime today = DateTime.Today;
+                                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                                    string userDir = Path.Combine(basePath, "User_Directory");
+                                    string path = Path.Combine(userDir, adminAddUsers_username.Text.Trim() + ".jpg");
 
-                                string directoryPath= Path.GetDirectoryName(path);
+                                    string directoryPath = Path.GetDirectoryName(path);
 
-                                if (!Directory.Exists(directoryPath))
-                                {
-                                    Directory.CreateDirectory(directoryPath);
+                                    if (!Directory.Exists(directoryPath))
+                                    {
+                                        Directory.CreateDirectory(directoryPath);
 
+                                    }
+
+                                    File.Copy(adminAddUsers_imageView.ImageLocation, path, true);
+
+                                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                    {
+                                        cmd.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@pass", adminAddUsers_password.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@image", path);
+                                        cmd.Parameters.AddWithValue("@role", adminAddUsers_role.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@status", adminAddUsers_status.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@date", today);
+
+                                        cmd.ExecuteNonQuery();
+
+                                        clearFields();
+
+                                        MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        displayAddUsersData();
+
+                                    }
                                 }
-                                
-                                File.Copy(adminAddUsers_imageView.ImageLocation, path, true);
-
-                                using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                catch (System.ArgumentException ex)
                                 {
-                                    cmd.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@pass", adminAddUsers_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@image", path);
-                                    cmd.Parameters.AddWithValue("@role", adminAddUsers_role.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@status", adminAddUsers_status.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@date", today);
-
-                                    cmd.ExecuteNonQuery();
-
-                                    clearFields();
-
-                                    MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    displayAddUsersData();
-
+                                    MessageBox.Show("Phải thêm ảnh", "Đã xảy ra lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }
@@ -182,21 +190,21 @@ namespace CafeManagementSystem
             adminAddUsers_status.Text = row.Cells[4].Value.ToString();
 
             string imagePath = row.Cells[5].Value.ToString();
-
             try
             {
-                if (imagePath != null)
+                if (imagePath != null && imagePath != "")
                 {
-                    adminAddUsers_imageView.Image = Image.FromFile(imagePath);
+                        adminAddUsers_imageView.Image = Image.FromFile(imagePath);
                 }
                 else
                 {
-                    adminAddUsers_imageView.Image = null;
+                    string root = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    string filename = Path.Combine(root, "Assets", "no-image.png");
+                    adminAddUsers_imageView.Image = Image.FromFile(filename);
                 }
             }
-            catch (Exception ex)
+            catch (System.ArgumentException ex)
             {
-
                 MessageBox.Show("Không có ảnh " + ex, "Đã xảy ra lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -221,14 +229,30 @@ namespace CafeManagementSystem
                         {
                             connect.Open();
 
-                            string updateData = "UPDATE users SET username= @usern, password= @pass, role= @role, status= @status WHERE id= @id ";
+                            string updateData = "UPDATE users SET username= @usern, password= @pass, role= @role, status= @status, profile_image = @path WHERE id= @id ";
 
                             using (SqlCommand cmd = new SqlCommand(updateData, connect))
                             {
+                                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                                string userDir = Path.Combine(basePath, "User_Directory");
+                                string path = Path.Combine(userDir, adminAddUsers_username.Text.Trim() + ".jpg");
+
+                                string directoryPath = Path.GetDirectoryName(path);
+
+                                if (!Directory.Exists(directoryPath))
+                                {
+                                    Directory.CreateDirectory(directoryPath);
+
+                                }
+
+                                File.Copy(adminAddUsers_imageView.ImageLocation, path, true);
+
+
                                 cmd.Parameters.AddWithValue("@usern", adminAddUsers_username.Text.Trim());
                                 cmd.Parameters.AddWithValue("@pass", adminAddUsers_password.Text.Trim());
                                 cmd.Parameters.AddWithValue("@role", adminAddUsers_role.Text.Trim());
                                 cmd.Parameters.AddWithValue("@status", adminAddUsers_status.Text.Trim());
+                                cmd.Parameters.AddWithValue("@path", path);
                                 cmd.Parameters.AddWithValue("@id", id);
 
                                 cmd.ExecuteNonQuery();
