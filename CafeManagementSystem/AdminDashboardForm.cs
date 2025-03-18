@@ -126,8 +126,16 @@ namespace CafeManagementSystem
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            int count = Convert.ToInt32(reader[0]);
-                            dashbroad_incomeToday.Text = count.ToString() + " VND";
+                            if (reader[0] is int)
+                            {
+                                int count = Convert.ToInt32(reader[0]);
+                                dashbroad_incomeToday.Text = count.ToString() + " VND";
+                            }
+                            else
+                            {
+                                int count = 0;
+                                dashbroad_incomeToday.Text = count.ToString() + " VND";
+                            }
                         }
 
                         reader.Close();
@@ -159,8 +167,17 @@ namespace CafeManagementSystem
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            int count = Convert.ToInt32(reader[0]);
-                            dashbroad_incomeTotal.Text = count.ToString() + " VND";
+                            if (reader[0] is int)
+                            {
+                                int count = Convert.ToInt32(reader[0]);
+                                dashbroad_incomeTotal.Text = count.ToString() + " VND";
+                            }
+                            else
+                            {
+                                int count = 0;
+                                dashbroad_incomeTotal.Text = count.ToString() + " VND";
+                            }
+
                         }
 
                         reader.Close();
