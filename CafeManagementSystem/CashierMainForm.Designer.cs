@@ -37,20 +37,21 @@
             this.username = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
             this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -95,6 +96,7 @@
             this.customers_btn.TabIndex = 20;
             this.customers_btn.Text = "Khách hàng";
             this.customers_btn.UseVisualStyleBackColor = true;
+            this.customers_btn.Click += new System.EventHandler(this.customers_btn_Click);
             // 
             // order_btn
             // 
@@ -107,6 +109,7 @@
             this.order_btn.TabIndex = 19;
             this.order_btn.Text = "Order";
             this.order_btn.UseVisualStyleBackColor = true;
+            this.order_btn.Click += new System.EventHandler(this.order_btn_Click);
             // 
             // addProducts_btn
             // 
@@ -119,6 +122,7 @@
             this.addProducts_btn.TabIndex = 18;
             this.addProducts_btn.Text = "Thêm sản phẩm";
             this.addProducts_btn.UseVisualStyleBackColor = true;
+            this.addProducts_btn.Click += new System.EventHandler(this.addProducts_btn_Click);
             // 
             // dashboard_btn
             // 
@@ -131,6 +135,7 @@
             this.dashboard_btn.TabIndex = 17;
             this.dashboard_btn.Text = "Trang chủ";
             this.dashboard_btn.UseVisualStyleBackColor = true;
+            this.dashboard_btn.Click += new System.EventHandler(this.dashboard_btn_Click);
             // 
             // username
             // 
@@ -164,17 +169,6 @@
             this.label2.Size = new System.Drawing.Size(172, 19);
             this.label2.TabIndex = 14;
             this.label2.Text = "Cổng thông tin Thu ngân";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::CafeManagementSystem.Properties.Resources.coffee;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 123);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
             // 
             // panel1
             // 
@@ -219,35 +213,54 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.cashierOrderForm1);
-            this.panel4.Controls.Add(this.adminAddProducts1);
             this.panel4.Controls.Add(this.adminDashboardForm1);
+            this.panel4.Controls.Add(this.adminAddProducts1);
+            this.panel4.Controls.Add(this.cashierOrderForm1);
+            this.panel4.Controls.Add(this.cashierCustomerFrom1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1290, 755);
             this.panel4.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CafeManagementSystem.Properties.Resources.coffee;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 123);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
+            // cashierCustomerFrom1
+            // 
+            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
+            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
+            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierCustomerFrom1.TabIndex = 0;
+            // 
             // cashierOrderForm1
             // 
             this.cashierOrderForm1.Location = new System.Drawing.Point(0, 0);
             this.cashierOrderForm1.Name = "cashierOrderForm1";
-            this.cashierOrderForm1.Size = new System.Drawing.Size(1295, 755);
-            this.cashierOrderForm1.TabIndex = 4;
+            this.cashierOrderForm1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierOrderForm1.TabIndex = 1;
             // 
             // adminAddProducts1
             // 
             this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
             this.adminAddProducts1.Name = "adminAddProducts1";
-            this.adminAddProducts1.Size = new System.Drawing.Size(1295, 755);
-            this.adminAddProducts1.TabIndex = 1;
+            this.adminAddProducts1.Size = new System.Drawing.Size(1290, 752);
+            this.adminAddProducts1.TabIndex = 2;
             // 
             // adminDashboardForm1
             // 
             this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
             this.adminDashboardForm1.Name = "adminDashboardForm1";
-            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
-            this.adminDashboardForm1.TabIndex = 0;
+            this.adminDashboardForm1.Size = new System.Drawing.Size(1290, 755);
+            this.adminDashboardForm1.TabIndex = 3;
             // 
             // CashierMainForm
             // 
@@ -263,11 +276,11 @@
             this.Text = "CashierMainForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -289,8 +302,9 @@
         private System.Windows.Forms.Label close;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private AdminAddProducts adminAddProducts1;
         private AdminDashboardForm adminDashboardForm1;
+        private AdminAddProducts adminAddProducts1;
         private CashierOrderForm cashierOrderForm1;
+        private CashierCustomerFrom cashierCustomerFrom1;
     }
 }

@@ -42,9 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
+            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
+            this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,7 +60,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1364, 45);
+            this.panel1.Size = new System.Drawing.Size(1508, 45);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -126,6 +127,7 @@
             this.button3.TabIndex = 20;
             this.button3.Text = "Khách hàng";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -213,21 +215,14 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.adminDashboardForm1);
+            this.panel3.Controls.Add(this.cashierCustomerFrom1);
             this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUsers1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(205, 45);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1159, 755);
+            this.panel3.Size = new System.Drawing.Size(1303, 755);
             this.panel3.TabIndex = 1;
-            // 
-            // adminDashboardForm1
-            // 
-            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
-            this.adminDashboardForm1.Name = "adminDashboardForm1";
-            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
-            this.adminDashboardForm1.TabIndex = 2;
-            this.adminDashboardForm1.Load += new System.EventHandler(this.adminDashboardForm1_Load);
             // 
             // adminAddProducts1
             // 
@@ -243,11 +238,25 @@
             this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
             this.adminAddUsers1.TabIndex = 0;
             // 
+            // cashierCustomerFrom1
+            // 
+            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
+            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
+            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1303, 755);
+            this.cashierCustomerFrom1.TabIndex = 2;
+            // 
+            // adminDashboardForm1
+            // 
+            this.adminDashboardForm1.Location = new System.Drawing.Point(4, 0);
+            this.adminDashboardForm1.Name = "adminDashboardForm1";
+            this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
+            this.adminDashboardForm1.TabIndex = 3;
+            // 
             // AdminMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 800);
+            this.ClientSize = new System.Drawing.Size(1508, 800);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -284,5 +293,6 @@
         private AdminAddUsers adminAddUsers1;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboardForm adminDashboardForm1;
+        private CashierCustomerFrom cashierCustomerFrom1;
     }
 }
