@@ -54,6 +54,7 @@ namespace CafeManagementSystem
             List<AdminAddProductsData> listData = prodData.productsListData();
 
             dataGridView1.DataSource = listData;
+            dataGridView1.Rows[0].Selected = false;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -123,47 +124,54 @@ namespace CafeManagementSystem
                             }
                             else
                             {
-                                string insertData = "INSERT INTO products (prod_id, prod_name, prod_type," + 
+                                try
+                                {
+                                    string insertData = "INSERT INTO products (prod_id, prod_name, prod_type," +
                                       "prod_stock, prod_price, prod_status, prod_image, date_insert) VALUES(@prodID, @prodName, @prodType, @prodStock, @prodPrice, @prodStatus, @prodImage, @dateInsert)";
 
 
 
-                                DateTime today = DateTime.Today;
-                                string basePath = AppDomain.CurrentDomain.BaseDirectory;
-                                string userDir = Path.Combine(basePath, "Product_Directory");
-                                string path = Path.Combine(userDir, adminAddProducts_id.Text.Trim() + ".jpg");
+                                    DateTime today = DateTime.Today;
+                                    string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                                    string userDir = Path.Combine(basePath, "Product_Directory");
+                                    string path = Path.Combine(userDir, adminAddProducts_id.Text.Trim() + ".jpg");
 
-                                string directoryPath = Path.GetDirectoryName(path);
+                                    string directoryPath = Path.GetDirectoryName(path);
 
-                                if (!Directory.Exists(directoryPath))
-                                {
-                                    Directory.CreateDirectory(directoryPath);
+                                    if (!Directory.Exists(directoryPath))
+                                    {
+                                        Directory.CreateDirectory(directoryPath);
 
+                                    }
+
+                                    File.Copy(adminAddProducts_imageView.ImageLocation, path, true);
+
+
+
+                                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                    {
+                                        cmd.Parameters.AddWithValue("@prodID", adminAddProducts_id.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodName", adminAddProducts_name.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodType", adminAddProducts_type.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodStock", adminAddProducts_stock.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodPrice", adminAddProducts_price.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodStatus", adminAddProducts_status.Text.Trim());
+                                        cmd.Parameters.AddWithValue("@prodImage", path);
+                                        cmd.Parameters.AddWithValue("@dateInsert", today);
+
+                                        cmd.ExecuteNonQuery();
+
+                                        clearFields();
+
+                                        MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        displayData();
+
+                                    }
                                 }
-
-                                File.Copy(adminAddProducts_imageView.ImageLocation, path, true);
-
-
-
-                                using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                                catch (System.ArgumentException ex)
                                 {
-                                    cmd.Parameters.AddWithValue("@prodID", adminAddProducts_id.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodName", adminAddProducts_name.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodType", adminAddProducts_type.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodStock", adminAddProducts_stock.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodPrice", adminAddProducts_price.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodStatus", adminAddProducts_status.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@prodImage", path);
-                                    cmd.Parameters.AddWithValue("@dateInsert", today);
-
-                                    cmd.ExecuteNonQuery();
-
-                                    clearFields();
-
-                                    MessageBox.Show("Thêm hoàn tất!", "Thông tin!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    displayData();
-
+                                    MessageBox.Show("Phải thêm ảnh", "Đã xảy ra lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }

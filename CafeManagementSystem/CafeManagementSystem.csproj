@@ -393,7 +393,6 @@
     <Content Include="Assets\cfshop-background.jpg" />
     <None Include="Resources\cfshop-background.jpg" />
     <Content Include="Resources\database.sql" />
-    <Content Include="User_Directory\Trollface.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
