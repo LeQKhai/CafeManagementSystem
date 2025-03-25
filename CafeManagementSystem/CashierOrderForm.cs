@@ -29,7 +29,7 @@ namespace CafeManagementSystem
             InitializeComponent();
 
             displayAvailableProds();
-            displayAllOrders();
+            //displayAllOrders();
             displayTotalPrice();
         }
 
@@ -42,7 +42,7 @@ namespace CafeManagementSystem
             }
 
             displayAvailableProds();
-            displayAllOrders();
+            //displayAllOrders();
             displayTotalPrice();
         }
 
@@ -64,17 +64,17 @@ namespace CafeManagementSystem
 
         public void displayTotalPrice()
         {
-            IDGenerator();
+            //IDGenerator();
             if (connect.State == ConnectionState.Closed)
             {
                 try
                 {
                     connect.Open();
 
-                    string selectData = "SELECT SUM(prod_price) FROM orders WHERE customer_id = @cusID";
+                    string selectData = "SELECT SUM(prod_price) FROM order_details WHERE order_id = @orderID";
                     using(SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@cusID", idGen);
+                        cmd.Parameters.AddWithValue("@orderID", idGen);
                         object result = cmd.ExecuteScalar();
 
                         if (result != DBNull.Value)
@@ -85,7 +85,7 @@ namespace CafeManagementSystem
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (SqlException ex)
                 {
                     MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -147,13 +147,13 @@ namespace CafeManagementSystem
                             }
                         }
 
-                        string insertOrder = "INSERT INTO orders (customer_id, prod_id, prod_name, prod_type, prod_price, qty, order_date)" +
-                            "VALUES (@customerID, @prodID, @prodName, @prodType, @prodPrice, @qty, @orderDate)";
+                        string insertOrder = "INSERT INTO order_details (order_id, prod_id, prod_name, prod_type, prod_price, qty, order_date)" +
+                            "VALUES (@orderID, @prodID, @prodName, @prodType, @prodPrice, @qty, @orderDate)";
 
                         DateTime today = DateTime.Today;
                         using(SqlCommand cmd = new SqlCommand(insertOrder, connect))
                         {
-                            cmd.Parameters.AddWithValue("@customerID", idGen);
+                            cmd.Parameters.AddWithValue("@orderID", idGen);
                             cmd.Parameters.AddWithValue("@prodID", CashierOrderForm_productID.Text.Trim());
                             cmd.Parameters.AddWithValue("@prodName", CashierOrderForm_prodName.Text.Trim());
                             cmd.Parameters.AddWithValue("@prodType", CashierOrderForm_type.Text.Trim());
@@ -169,9 +169,9 @@ namespace CafeManagementSystem
                             
                         }
                     }
-                    catch
+                    catch (SqlException ex)
                     {
-                        MessageBox.Show("Connection failed", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
@@ -187,7 +187,7 @@ namespace CafeManagementSystem
             using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
             {
                 connect.Open();
-                string selectID = "SELECT MAX(customer_id) FROM customers";
+                string selectID = "SELECT MAX(order_id) FROM order_details";
 
                 using(SqlCommand cmd = new SqlCommand(selectID, connect))
                 {
@@ -320,7 +320,7 @@ namespace CafeManagementSystem
             }
             else
             {
-                if(MessageBox.Show("Are you sure paying?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(MessageBox.Show("Are you sure?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if(connect.State == ConnectionState.Closed)
                     {
@@ -330,14 +330,14 @@ namespace CafeManagementSystem
 
                             IDGenerator();
 
-                            string insertData = "INSERT INTO customers (customer_id, total_price, amount, change, date)" +
-                                "VALUES(@cusID, @totalPrice, @amount, @change, @date)";
+                            string insertData = "INSERT INTO orders (order_id, total_price, amount, change, date)" +
+                                "VALUES(@orderID, @totalPrice, @amount, @change, @date)";
 
                             DateTime today = DateTime.Today;
 
                             using(SqlCommand cmd = new SqlCommand(insertData, connect))
                             {
-                                cmd.Parameters.AddWithValue("@cusID", idGen);
+                                cmd.Parameters.AddWithValue("@orderID", idGen);
                                 cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
                                 cmd.Parameters.AddWithValue("@amount", CashierOrderForm_amount.Text);
                                 cmd.Parameters.AddWithValue("@change", CashierOrderForm_change.Text);
@@ -346,6 +346,11 @@ namespace CafeManagementSystem
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Paid successfully!", "Infomation Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                CashierOrderForm_orderPrice.Text = "";
+                                CashierOrderForm_amount.Text = "";
+                                CashierOrderForm_change.Text = "";
+                                CashierOrderForm_orderTable.DataSource = null;
                             }
                         }
                         catch(Exception ex)
@@ -406,7 +411,7 @@ namespace CafeManagementSystem
             count++;
             y += tableMargin;
 
-            string[] header = { "CID", "ProdID", "ProdName", "ProdType", "Qty", "Price" };
+            string[] header = { "OID", "ProdID", "ProdName", "ProdType", "Qty", "Price" };
 
             for (int i = 0; i < header.Length; i++)
             {

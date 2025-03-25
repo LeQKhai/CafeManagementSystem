@@ -8,18 +8,18 @@ using System.Data;
 
 namespace CafeManagementSystem
 {
-    internal class CustomersData
+    internal class OrderData
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
-        public int CustomerID { set; get; }
+        public int OrderID { set; get; }
         public string TotalPrice { set; get; }
         public string Amount { set; get; }
         public string Change { set; get; }
         public string Date { set; get; }
 
-        public List<CustomersData> allCustomersData()
+        public List<OrderData> allOrdersData()
         {
-            List<CustomersData> listData = new List<CustomersData>();
+            List<OrderData> listData = new List<OrderData>();
 
             if(connect.State == ConnectionState.Closed)
             {
@@ -27,7 +27,7 @@ namespace CafeManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT * FROM customers";
+                    string selectData = "SELECT * FROM orders";
 
                     using(SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -35,9 +35,9 @@ namespace CafeManagementSystem
 
                         while (reader.Read())
                         {
-                            CustomersData cData = new CustomersData();
+                            OrderData cData = new OrderData();
 
-                            cData.CustomerID = (int)reader["customer_id"];
+                            cData.OrderID = (int)reader["order_id"];
                             cData.TotalPrice = reader["total_price"].ToString();
                             cData.Amount = reader["amount"].ToString();
                             cData.Change = reader["change"].ToString();

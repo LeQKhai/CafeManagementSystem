@@ -15,6 +15,7 @@ namespace CafeManagementSystem
         public CashierMainForm()
         {
             InitializeComponent();
+            username.Text = Form1.login;
         }
 
         private void close_Click(object sender, EventArgs e)
