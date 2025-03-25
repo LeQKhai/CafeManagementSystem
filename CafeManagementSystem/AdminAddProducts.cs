@@ -54,7 +54,10 @@ namespace CafeManagementSystem
             List<AdminAddProductsData> listData = prodData.productsListData();
 
             dataGridView1.DataSource = listData;
-            dataGridView1.Rows[0].Selected = false;
+            if (dataGridView1.Rows.Count > 0)
+            {
+                dataGridView1.Rows[0].Selected = false;
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

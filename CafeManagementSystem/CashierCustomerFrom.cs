@@ -30,8 +30,8 @@ namespace CafeManagementSystem
 
         public void displayAllCustomers()
         {
-            CustomersData cData = new CustomersData();
-            List<CustomersData> listData = cData.allCustomersData();
+            OrderData cData = new OrderData();
+            List<OrderData> listData = cData.allOrdersData();
 
             CashierCustomerForm_customerTable.DataSource = listData;
         }

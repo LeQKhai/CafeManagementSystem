@@ -15,6 +15,7 @@ namespace CafeManagementSystem
         public AdminMainForm()
         {
             InitializeComponent();
+            username.Text = Form1.login;
         }
 
         private void close_Click(object sender, EventArgs e)

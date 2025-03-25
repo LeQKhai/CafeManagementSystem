@@ -15,6 +15,7 @@ namespace CafeManagementSystem
     public partial class Form1 : Form
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
+        public static string login;
         public Form1()
         {
             InitializeComponent();
@@ -87,7 +88,7 @@ namespace CafeManagementSystem
                                     string userRole = getRole.ExecuteScalar() as string;
 
                                     MessageBox.Show("Đăng nhập thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                                    login = login_username.Text.Trim();
                                     if (userRole == "Admin")
                                     {
                                         AdminMainForm adminForm = new AdminMainForm();

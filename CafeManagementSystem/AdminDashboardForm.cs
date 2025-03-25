@@ -83,7 +83,7 @@ namespace CafeManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT COUNT(id) FROM customers";
+                    string selectData = "SELECT COUNT(id) FROM orders";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -116,7 +116,7 @@ namespace CafeManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT SUM(total_price) FROM customers WHERE date = @date";
+                    string selectData = "SELECT SUM(total_price) FROM orders WHERE date = @date";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
@@ -160,7 +160,7 @@ namespace CafeManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT SUM(total_price) FROM customers";
+                    string selectData = "SELECT SUM(total_price) FROM orders";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {

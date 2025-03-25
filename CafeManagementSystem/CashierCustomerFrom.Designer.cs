@@ -75,9 +75,9 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(23, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 24);
+            this.label1.Size = new System.Drawing.Size(101, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "All Customers";
+            this.label1.Text = "All Orders";
             // 
             // CashierCustomerFrom
             // 

@@ -29,10 +29,10 @@ namespace CafeManagementSystem
                     connect.Open();
 
                     int cusID = 0;
-                    string selectCusData = "SELECT MAX(customer_id) FROM orders";
-                    using (SqlCommand getCusData = new SqlCommand(selectCusData, connect))
+                    string selectCusData = "SELECT MAX(order_id) FROM order_details";
+                    using (SqlCommand getOderDetailsData = new SqlCommand(selectCusData, connect))
                     {
-                        object result = getCusData.ExecuteScalar();
+                        object result = getOderDetailsData.ExecuteScalar();
                         if(result != DBNull.Value)
                         {
                             int temp = Convert.ToInt32(result);
@@ -43,10 +43,10 @@ namespace CafeManagementSystem
                         }
                     }
 
-                    string selectData = "SELECT * FROM orders WHERE customer_id = @customerID";
+                    string selectData = "SELECT * FROM order_details WHERE order_id = @orderID";
                     using(SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
-                        cmd.Parameters.AddWithValue("@customerID", cusID);
+                        cmd.Parameters.AddWithValue("@orderID", cusID);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -54,7 +54,7 @@ namespace CafeManagementSystem
                             {
                                 CashierOrdersData ordersData = new CashierOrdersData();
 
-                                ordersData.CID = (int)reader["customer_id"];
+                                ordersData.CID = (int)reader["order_id"];
                                 ordersData.ProdID = reader["prod_id"].ToString();
                                 ordersData.ProdName = reader["prod_name"].ToString();
                                 ordersData.ProdType = reader["prod_type"].ToString();

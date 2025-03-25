@@ -37,21 +37,21 @@
             this.username = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.close = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
-            this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
-            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
+            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
+            this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
+            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -94,7 +94,7 @@
             this.customers_btn.Name = "customers_btn";
             this.customers_btn.Size = new System.Drawing.Size(190, 43);
             this.customers_btn.TabIndex = 20;
-            this.customers_btn.Text = "Khách hàng";
+            this.customers_btn.Text = "Đơn hàng";
             this.customers_btn.UseVisualStyleBackColor = true;
             this.customers_btn.Click += new System.EventHandler(this.customers_btn_Click);
             // 
@@ -170,6 +170,17 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Cổng thông tin Thu ngân";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::CafeManagementSystem.Properties.Resources.coffee;
+            this.pictureBox1.Location = new System.Drawing.Point(32, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(132, 123);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -223,30 +234,12 @@
             this.panel4.Size = new System.Drawing.Size(1290, 755);
             this.panel4.TabIndex = 0;
             // 
-            // pictureBox1
+            // adminDashboardForm1
             // 
-            this.pictureBox1.Image = global::CafeManagementSystem.Properties.Resources.coffee;
-            this.pictureBox1.Location = new System.Drawing.Point(32, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(132, 123);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 11;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
-            // 
-            // cashierCustomerFrom1
-            // 
-            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
-            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
-            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1290, 755);
-            this.cashierCustomerFrom1.TabIndex = 0;
-            // 
-            // cashierOrderForm1
-            // 
-            this.cashierOrderForm1.Location = new System.Drawing.Point(0, 0);
-            this.cashierOrderForm1.Name = "cashierOrderForm1";
-            this.cashierOrderForm1.Size = new System.Drawing.Size(1290, 755);
-            this.cashierOrderForm1.TabIndex = 1;
+            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
+            this.adminDashboardForm1.Name = "adminDashboardForm1";
+            this.adminDashboardForm1.Size = new System.Drawing.Size(1290, 755);
+            this.adminDashboardForm1.TabIndex = 3;
             // 
             // adminAddProducts1
             // 
@@ -255,12 +248,19 @@
             this.adminAddProducts1.Size = new System.Drawing.Size(1290, 752);
             this.adminAddProducts1.TabIndex = 2;
             // 
-            // adminDashboardForm1
+            // cashierOrderForm1
             // 
-            this.adminDashboardForm1.Location = new System.Drawing.Point(0, 0);
-            this.adminDashboardForm1.Name = "adminDashboardForm1";
-            this.adminDashboardForm1.Size = new System.Drawing.Size(1290, 755);
-            this.adminDashboardForm1.TabIndex = 3;
+            this.cashierOrderForm1.Location = new System.Drawing.Point(0, 0);
+            this.cashierOrderForm1.Name = "cashierOrderForm1";
+            this.cashierOrderForm1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierOrderForm1.TabIndex = 1;
+            // 
+            // cashierCustomerFrom1
+            // 
+            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
+            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
+            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierCustomerFrom1.TabIndex = 0;
             // 
             // CashierMainForm
             // 
@@ -276,11 +276,11 @@
             this.Text = "CashierMainForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
