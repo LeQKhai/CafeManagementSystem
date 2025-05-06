@@ -89,11 +89,11 @@
             this.dashbroad_incomeTotal.AutoSize = true;
             this.dashbroad_incomeTotal.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashbroad_incomeTotal.ForeColor = System.Drawing.Color.White;
-            this.dashbroad_incomeTotal.Location = new System.Drawing.Point(166, 124);
+            this.dashbroad_incomeTotal.Location = new System.Drawing.Point(163, 124);
             this.dashbroad_incomeTotal.Name = "dashbroad_incomeTotal";
             this.dashbroad_incomeTotal.Size = new System.Drawing.Size(127, 23);
             this.dashbroad_incomeTotal.TabIndex = 8;
-            this.dashbroad_incomeTotal.Text = "1000000 VND";
+            this.dashbroad_incomeTotal.Text = "0000000 VND";
             // 
             // pictureBox4
             // 
@@ -179,7 +179,7 @@
             this.dashbroad_incomeToday.Name = "dashbroad_incomeToday";
             this.dashbroad_incomeToday.Size = new System.Drawing.Size(127, 23);
             this.dashbroad_incomeToday.TabIndex = 8;
-            this.dashbroad_incomeToday.Text = "1000000 VND";
+            this.dashbroad_incomeToday.Text = "0000000 VND";
             // 
             // pictureBox3
             // 

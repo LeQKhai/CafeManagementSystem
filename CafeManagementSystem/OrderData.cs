@@ -12,10 +12,11 @@ namespace CafeManagementSystem
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
         public int OrderID { set; get; }
+        public int CusID { set; get; }
         public string TotalPrice { set; get; }
         public string Amount { set; get; }
         public string Change { set; get; }
-        public string Date { set; get; }
+        public string OrderDate { set; get; }
 
         public List<OrderData> allOrdersData()
         {
@@ -37,11 +38,12 @@ namespace CafeManagementSystem
                         {
                             OrderData cData = new OrderData();
 
-                            cData.OrderID = (int)reader["order_id"];
+                            cData.OrderID = (int)reader["id"];
+                            cData.CusID = (int)reader["cus_id"];
                             cData.TotalPrice = reader["total_price"].ToString();
                             cData.Amount = reader["amount"].ToString();
                             cData.Change = reader["change"].ToString();
-                            cData.Date = reader["date"].ToString();
+                            cData.OrderDate = Convert.ToDateTime(reader["order_date"]).ToString("dd/MM/yyyy");
 
                             listData.Add(cData);
                         }

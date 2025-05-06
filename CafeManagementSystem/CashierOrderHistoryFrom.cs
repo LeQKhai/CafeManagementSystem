@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CafeManagementSystem
 {
-    public partial class CashierCustomerFrom : UserControl
+    public partial class CashierOrderHistoryFrom : UserControl
     {
-        public CashierCustomerFrom()
+        public CashierOrderHistoryFrom()
         {
             InitializeComponent();
             displayAllCustomers();
@@ -35,5 +35,7 @@ namespace CafeManagementSystem
 
             CashierCustomerForm_customerTable.DataSource = listData;
         }
+
+        
     }
 }

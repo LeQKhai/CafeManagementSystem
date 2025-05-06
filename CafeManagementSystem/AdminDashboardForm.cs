@@ -116,25 +116,24 @@ namespace CafeManagementSystem
                 {
                     connect.Open();
 
-                    string selectData = "SELECT SUM(total_price) FROM orders WHERE date = @date";
+                    string selectData = "SELECT SUM(total_price) FROM orders WHERE order_date = @order_date";
 
                     using (SqlCommand cmd = new SqlCommand(selectData, connect))
                     {
                         DateTime today = DateTime.Today;
-                        cmd.Parameters.AddWithValue("@date", today);
+                        cmd.Parameters.AddWithValue("@order_date", today);
 
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            if (reader[0] is int)
+                            if (!Convert.IsDBNull(reader[0]))
                             {
-                                int count = Convert.ToInt32(reader[0]);
-                                dashbroad_incomeToday.Text = count.ToString() + " VND";
+                                decimal count = Convert.ToDecimal(reader[0]);
+                                dashbroad_incomeToday.Text = count.ToString("N0") + " VND";
                             }
                             else
                             {
-                                int count = 0;
-                                dashbroad_incomeToday.Text = count.ToString() + " VND";
+                                dashbroad_incomeToday.Text =  "0 VND";
                             }
                         }
 
@@ -167,17 +166,15 @@ namespace CafeManagementSystem
                         SqlDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            if (reader[0] is int)
+                            if (!Convert.IsDBNull(reader[0]))
                             {
-                                int count = Convert.ToInt32(reader[0]);
-                                dashbroad_incomeTotal.Text = count.ToString() + " VND";
+                                decimal total = Convert.ToDecimal(reader[0]);
+                                dashbroad_incomeTotal.Text = total.ToString("N0") + " VND";
                             }
                             else
                             {
-                                int count = 0;
-                                dashbroad_incomeTotal.Text = count.ToString() + " VND";
+                                dashbroad_incomeTotal.Text = "0 VND";
                             }
-
                         }
 
                         reader.Close();
@@ -185,7 +182,7 @@ namespace CafeManagementSystem
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Connection failed: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -193,5 +190,48 @@ namespace CafeManagementSystem
                 }
             }
         }
+
+
+        //public void displayTotalIncome()
+        //{
+        //    if (connect.State == ConnectionState.Closed)
+        //    {
+        //        try
+        //        {
+        //            connect.Open();
+
+        //            string selectData = "SELECT SUM(total_price) FROM orders";
+
+        //            using (SqlCommand cmd = new SqlCommand(selectData, connect))
+        //            {
+        //                SqlDataReader reader = cmd.ExecuteReader();
+        //                if (reader.Read())
+        //                {
+        //                    if (reader[0] is int)
+        //                    {
+        //                        int count = Convert.ToInt32(reader[0]);
+        //                        dashbroad_incomeTotal.Text = count.ToString("N0") + " VND";
+        //                    }
+        //                    else
+        //                    {
+        //                        int count = 0;
+        //                        dashbroad_incomeTotal.Text = count.ToString("N0") + " VND";
+        //                    }
+
+        //                }
+
+        //                reader.Close();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //        finally
+        //        {
+        //            connect.Close();
+        //        }
+        //    }
+        //}
     }
 }

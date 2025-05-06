@@ -281,11 +281,11 @@
     <Compile Include="AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CashierCustomerFrom.cs">
+    <Compile Include="CashierOrderHistoryFrom.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CashierCustomerFrom.Designer.cs">
-      <DependentUpon>CashierCustomerFrom.cs</DependentUpon>
+    <Compile Include="CashierOrderHistoryFrom.Designer.cs">
+      <DependentUpon>CashierOrderHistoryFrom.cs</DependentUpon>
     </Compile>
     <Compile Include="CashierMainForm.cs">
       <SubType>Form</SubType>
@@ -329,8 +329,8 @@
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CashierCustomerFrom.resx">
-      <DependentUpon>CashierCustomerFrom.cs</DependentUpon>
+    <EmbeddedResource Include="CashierOrderHistoryFrom.resx">
+      <DependentUpon>CashierOrderHistoryFrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CashierMainForm.resx">
       <DependentUpon>CashierMainForm.cs</DependentUpon>

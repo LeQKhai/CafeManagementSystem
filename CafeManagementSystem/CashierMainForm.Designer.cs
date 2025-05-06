@@ -46,7 +46,7 @@
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
-            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
+            this.cashierOrderHistoryFrom1 = new CafeManagementSystem.CashierOrderHistoryFrom();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,7 +94,7 @@
             this.customers_btn.Name = "customers_btn";
             this.customers_btn.Size = new System.Drawing.Size(190, 43);
             this.customers_btn.TabIndex = 20;
-            this.customers_btn.Text = "Đơn hàng";
+            this.customers_btn.Text = "Lịch sử đơn hàng";
             this.customers_btn.UseVisualStyleBackColor = true;
             this.customers_btn.Click += new System.EventHandler(this.customers_btn_Click);
             // 
@@ -227,7 +227,7 @@
             this.panel4.Controls.Add(this.adminDashboardForm1);
             this.panel4.Controls.Add(this.adminAddProducts1);
             this.panel4.Controls.Add(this.cashierOrderForm1);
-            this.panel4.Controls.Add(this.cashierCustomerFrom1);
+            this.panel4.Controls.Add(this.cashierOrderHistoryFrom1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -255,12 +255,12 @@
             this.cashierOrderForm1.Size = new System.Drawing.Size(1290, 755);
             this.cashierOrderForm1.TabIndex = 1;
             // 
-            // cashierCustomerFrom1
+            // cashierOrderHistoryFrom1
             // 
-            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
-            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
-            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1290, 755);
-            this.cashierCustomerFrom1.TabIndex = 0;
+            this.cashierOrderHistoryFrom1.Location = new System.Drawing.Point(0, 0);
+            this.cashierOrderHistoryFrom1.Name = "cashierOrderHistoryFrom1";
+            this.cashierOrderHistoryFrom1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierOrderHistoryFrom1.TabIndex = 0;
             // 
             // CashierMainForm
             // 
@@ -305,6 +305,6 @@
         private AdminDashboardForm adminDashboardForm1;
         private AdminAddProducts adminAddProducts1;
         private CashierOrderForm cashierOrderForm1;
-        private CashierCustomerFrom cashierCustomerFrom1;
+        private CashierOrderHistoryFrom cashierOrderHistoryFrom1;
     }
 }

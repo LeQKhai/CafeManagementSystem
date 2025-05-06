@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
 using System.Drawing.Printing;
+using System.Text.RegularExpressions;
 
 namespace CafeManagementSystem
 {
@@ -19,8 +20,12 @@ namespace CafeManagementSystem
         private object selectedValue;
         private int idGen = 0;
         private float totalPrice;
+        float discount = 0;
+        int usedPoints = 0;
         private int rowIndex = 0;
-        public static int getCusID;
+        public static int getOrderID;
+        public static int cusID = -1;
+        public static int points = 0;
 
         public object SelectedValue { get; private set; }
 
@@ -29,8 +34,6 @@ namespace CafeManagementSystem
             InitializeComponent();
 
             displayAvailableProds();
-            //displayAllOrders();
-            displayTotalPrice();
         }
 
         public void refreshData()
@@ -42,8 +45,6 @@ namespace CafeManagementSystem
             }
 
             displayAvailableProds();
-            //displayAllOrders();
-            displayTotalPrice();
         }
 
         public void displayAvailableProds()
@@ -55,50 +56,23 @@ namespace CafeManagementSystem
             CashierOrderForm_menuTable.DataSource = listData;
         }
 
-        public void displayAllOrders()
+        public void displayTotalPrice(float discount)
         {
-            CashierOrdersData allOrders = new CashierOrdersData();
-            List<CashierOrdersData> listData = allOrders.ordersListData();
-            CashierOrderForm_orderTable.DataSource = listData;
-        }
+            float total = 0;
 
-        public void displayTotalPrice()
-        {
-            //IDGenerator();
-            if (connect.State == ConnectionState.Closed)
+            foreach (DataGridViewRow row in CashierOrderForm_orderTable.Rows)
             {
-                try
+                // Kiểm tra dòng hợp lệ (tránh dòng mới chưa nhập)
+                if (row.Cells["total"].Value != null)
                 {
-                    connect.Open();
-
-                    string selectData = "SELECT SUM(prod_price) FROM order_details WHERE order_id = @orderID";
-                    using(SqlCommand cmd = new SqlCommand(selectData, connect))
-                    {
-                        cmd.Parameters.AddWithValue("@orderID", idGen);
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != DBNull.Value)
-                        {
-                            totalPrice = Convert.ToSingle(result);
-
-                            CashierOrderForm_orderPrice.Text = totalPrice.ToString();
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    connect.Close();
+                    float price = 0;
+                    float.TryParse(row.Cells["total"].Value.ToString(), out price);
+                    total += price;
                 }
             }
-        }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            totalPrice = total - discount;
+            CashierOrderForm_orderPrice.Text = totalPrice.ToString("N0");
         }
 
         private bool EmptyFields()
@@ -114,8 +88,6 @@ namespace CafeManagementSystem
 
         private void CashierOrderForm_addBtn_Click(object sender, EventArgs e)
         {
-            IDGenerator();
-
             if(EmptyFields())
             {
                 MessageBox.Show("Vui lòng chọn sản phẩm trước", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -127,47 +99,44 @@ namespace CafeManagementSystem
                     try
                     {
                         connect.Open();
-                        float getPrice = 0;
-                        string selectOrder = "SELECT * FROM products WHERE prod_id = @prodID";
+                        string prodID = CashierOrderForm_productID.Text.Trim();
+                        int qty = (int)CashierOrderForm_quantity.Value;
 
-                        using(SqlCommand getOrder = new SqlCommand(selectOrder, connect))
+                        string selectQuery = "SELECT prod_name, prod_type, prod_price FROM products WHERE prod_id = @prodID";
+                        string prodName = "", prodType = "";
+                        float unitPrice = 0;
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connect))
                         {
-                            getOrder.Parameters.AddWithValue("@prodID", CashierOrderForm_productID.Text.Trim());
+                            cmd.Parameters.AddWithValue("@prodID", prodID);
 
-                            using(SqlDataReader reader = getOrder.ExecuteReader())
+                            using (SqlDataReader reader = cmd.ExecuteReader())
                             {
-                                if(reader.Read())
+                                if (reader.Read())
                                 {
-                                    object rawValue = reader["prod_price"];
-                                    if(rawValue != DBNull.Value)
-                                    {
-                                        getPrice = Convert.ToSingle(rawValue);
-                                    }
+                                    prodName = reader["prod_name"].ToString();
+                                    prodType = reader["prod_type"].ToString();
+                                    float.TryParse(reader["prod_price"].ToString(), out unitPrice);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Không tìm thấy sản phẩm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
                                 }
                             }
                         }
 
-                        string insertOrder = "INSERT INTO order_details (order_id, prod_id, prod_name, prod_type, prod_price, qty, order_date)" +
-                            "VALUES (@orderID, @prodID, @prodName, @prodType, @prodPrice, @qty, @orderDate)";
-
+                        float total = unitPrice * qty;
                         DateTime today = DateTime.Today;
-                        using(SqlCommand cmd = new SqlCommand(insertOrder, connect))
-                        {
-                            cmd.Parameters.AddWithValue("@orderID", idGen);
-                            cmd.Parameters.AddWithValue("@prodID", CashierOrderForm_productID.Text.Trim());
-                            cmd.Parameters.AddWithValue("@prodName", CashierOrderForm_prodName.Text.Trim());
-                            cmd.Parameters.AddWithValue("@prodType", CashierOrderForm_type.Text.Trim());
-                            cmd.Parameters.AddWithValue("@qty", CashierOrderForm_quantity.Value);
-                            cmd.Parameters.AddWithValue("@orderDate", today);
-
-                            float totalPrice = getPrice * (int)CashierOrderForm_quantity.Value;
-                            cmd.Parameters.AddWithValue("@prodPrice", totalPrice);
-
-                            cmd.ExecuteNonQuery();
-
-                            displayAllOrders();
-                            
-                        }
+                       
+                        CashierOrderForm_orderTable.Rows.Add(
+                            prodID,         
+                            prodName,
+                            prodType,
+                            unitPrice,
+                            qty,
+                            total
+                        );
                     }
                     catch (SqlException ex)
                     {
@@ -179,33 +148,7 @@ namespace CafeManagementSystem
                     }
                 }
             }
-            displayTotalPrice();
-        }
-
-        public void IDGenerator()
-        {
-            using (SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
-            {
-                connect.Open();
-                string selectID = "SELECT MAX(order_id) FROM order_details";
-
-                using(SqlCommand cmd = new SqlCommand(selectID, connect))
-                {
-                    object result = cmd.ExecuteScalar();
-
-                    if(result != DBNull.Value)
-                    {
-                        int temp = Convert.ToInt32(result);
-                        if (temp == 0) idGen = 1;
-                        else idGen = temp + 1;
-                    }
-                    else
-                    {
-                        idGen = 1;
-                    }
-                    getCusID = idGen;
-                }
-            }
+            displayTotalPrice(0);
         }
 
         private void CashierOrderForm_type_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,6 +231,7 @@ namespace CafeManagementSystem
             }
         }
 
+        // enter tiền nhận vào -> tính tiền thừa
         private void CashierOrderForm_amount_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
@@ -303,7 +247,7 @@ namespace CafeManagementSystem
                         CashierOrderForm_change.Text = "";
                     }
                     else 
-                        CashierOrderForm_change.Text = getChange.ToString();
+                        CashierOrderForm_change.Text = getChange.ToString("N0");
                 }
                 catch(Exception ex)
                 {
@@ -312,62 +256,119 @@ namespace CafeManagementSystem
             }
         }
 
+        // handle nút thanh toán
         private void CashierOrderForm_payBtn_Click(object sender, EventArgs e)
         {
-            if(CashierOrderForm_amount.Text == "" || CashierOrderForm_orderTable.Rows.Count < 0)
+            if (string.IsNullOrWhiteSpace(CashierOrderForm_amount.Text) || CashierOrderForm_orderTable.Rows.Count == 0)
             {
-                MessageBox.Show("Error when paying", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng nhập số tiền khách đưa và chọn sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
+
+            if (MessageBox.Show("Xác nhận thanh toán?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if(MessageBox.Show("Are you sure?", "Confirmation Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(connect.State == ConnectionState.Closed) connect.Open();
+
+                try
                 {
-                    if(connect.State == ConnectionState.Closed)
+                    //int usedPoints = 0;
+                    //String temp = tbPointsUse.Text.Trim();
+                    //if(temp != "") usedPoints = int.Parse(tbPointsUse.Text.Trim());
+                    
+
+                    
+
+                    DateTime today = DateTime.Today;
+                    float amount = float.Parse(CashierOrderForm_amount.Text);
+                    float change = float.Parse(CashierOrderForm_change.Text);
+
+
+                    //discount = usedPoints * 1000f;
+                    //totalPrice -= discount;
+                    
+
+                    // tạo order -> trả về order_id
+                    string insertOrder = "INSERT INTO orders (cus_id, total_price, order_date, amount, change) " +
+                                         "OUTPUT INSERTED.id " +
+                                         "VALUES (@cus_id, @total_price, @order_date, @amount, @change)";
+
+                    int insertedOrderID = 0;
+                    using (SqlCommand cmd = new SqlCommand(insertOrder, connect))
                     {
-                        try
+                        cmd.Parameters.AddWithValue("@cus_id", cusID); 
+                        cmd.Parameters.AddWithValue("@total_price", totalPrice);
+                        cmd.Parameters.AddWithValue("@order_date", today);
+                        cmd.Parameters.AddWithValue("@amount", amount);
+                        cmd.Parameters.AddWithValue("@change", change);
+
+                        insertedOrderID = (int)cmd.ExecuteScalar();
+                    }
+
+                    
+                    // lặp qua DataGridView và tạo các order_details
+                    foreach (DataGridViewRow row in CashierOrderForm_orderTable.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        string prodID = row.Cells["prod_id"].Value.ToString();
+                        int qty = Convert.ToInt32(row.Cells["qty"].Value);
+
+                        string insertDetail = "INSERT INTO order_details (order_id, prod_id, qty) VALUES (@orderID, @prodID, @qty)";
+
+                        using (SqlCommand detailCmd = new SqlCommand(insertDetail, connect))
                         {
-                            connect.Open();
+                            detailCmd.Parameters.AddWithValue("@orderID", insertedOrderID);
+                            detailCmd.Parameters.AddWithValue("@prodID", prodID);
+                            detailCmd.Parameters.AddWithValue("@qty", qty);
 
-                            IDGenerator();
-
-                            string insertData = "INSERT INTO orders (order_id, total_price, amount, change, date)" +
-                                "VALUES(@orderID, @totalPrice, @amount, @change, @date)";
-
-                            DateTime today = DateTime.Today;
-
-                            using(SqlCommand cmd = new SqlCommand(insertData, connect))
-                            {
-                                cmd.Parameters.AddWithValue("@orderID", idGen);
-                                cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
-                                cmd.Parameters.AddWithValue("@amount", CashierOrderForm_amount.Text);
-                                cmd.Parameters.AddWithValue("@change", CashierOrderForm_change.Text);
-                                cmd.Parameters.AddWithValue("@date", today);
-
-                                cmd.ExecuteNonQuery();
-
-                                MessageBox.Show("Paid successfully!", "Infomation Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                CashierOrderForm_orderPrice.Text = "";
-                                CashierOrderForm_amount.Text = "";
-                                CashierOrderForm_change.Text = "";
-                                CashierOrderForm_orderTable.DataSource = null;
-                            }
-                        }
-                        catch(Exception ex)
-                        {
-                            MessageBox.Show("Connection failed: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        finally
-                        {
-                            connect.Close();
+                            detailCmd.ExecuteNonQuery();
                         }
                     }
+
+                    // tích điểm
+                    int earnedPoints = (int)(totalPrice / 10000);
+                    int updatedPoints = points - usedPoints + earnedPoints;
+                    string updateQuery = "UPDATE customers SET points = @points WHERE cus_id = @cusID";
+                    using (SqlCommand cmd = new SqlCommand(updateQuery, connect))
+                    {
+                        cmd.Parameters.AddWithValue("@points", updatedPoints);
+                        cmd.Parameters.AddWithValue("@cusID", cusID);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Reset UI
+                    CashierOrderForm_orderPrice.Text = "";
+                    CashierOrderForm_amount.Text = "";
+                    CashierOrderForm_change.Text = "";
+                    CashierOrderForm_orderTable.Rows.Clear();
+                    cusID = -1;
+                    points = 0;
+                    discount = 0;
+                    usedPoints = 0;
+                    tbCusName.Text = "";
+                    tbPhone.Text = "";
+                    tbPoints.Text = "";
+                    tbPointsUse.Text = "";
+                    tbPointsUse.Enabled = false;
+
+                    totalPrice = 0;
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi thanh toán: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connect.Close();
+                }
+
+                displayTotalPrice(discount); 
             }
-            displayTotalPrice();
         }
 
-
+        // click nút in hoá đơn
         private void CashierOrderForm_receiptBtn_Click(object sender, EventArgs e)
         {
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
@@ -382,9 +383,10 @@ namespace CafeManagementSystem
             rowIndex = 0;
         }
 
+        // handle in hoá đơn
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            displayTotalPrice();
+            displayTotalPrice(0);
 
             float y = 0;
             int count = 0;
@@ -460,5 +462,161 @@ namespace CafeManagementSystem
             y = e.MarginBounds.Bottom - labelMargin - labelFont.GetHeight(e.Graphics);
             e.Graphics.DrawString(labelText, labelFont, Brushes.Black, e.MarginBounds.Right - e.Graphics.MeasureString("------------------------------", labelFont).Width, y);
         }
+
+        private void CashierOrderForm_Load(object sender, EventArgs e)
+        {
+            CashierOrderForm_orderTable.Columns.Clear();
+
+            CashierOrderForm_orderTable.Columns.Add("prod_id", "Product ID");
+            CashierOrderForm_orderTable.Columns.Add("prod_name", "Product Name");
+            CashierOrderForm_orderTable.Columns.Add("prod_type", "Product Type");
+            CashierOrderForm_orderTable.Columns.Add("prod_price", "Unit Price");
+            CashierOrderForm_orderTable.Columns.Add("qty", "Quantity");
+            CashierOrderForm_orderTable.Columns.Add("total", "Total");
+        }
+
+        // click item -> hiển thị thông tin
+        private void CashierOrderForm_menuTable_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo không phải header
+            {
+                DataGridViewRow selectedRow = CashierOrderForm_menuTable.Rows[e.RowIndex];
+                string selectedProductId = selectedRow.Cells["ProductID"].Value.ToString();
+
+                using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM products WHERE prod_id = @ProductId AND prod_status = @status";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@ProductId", selectedProductId);
+                    cmd.Parameters.AddWithValue("@status", "Available");
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        string prodName = reader["prod_name"].ToString();
+                        string prodPrice = reader["prod_price"].ToString();
+                        string prodType = reader["prod_type"].ToString();
+
+                        CashierOrderForm_prodName.Text = prodName;
+                        CashierOrderForm_price.Text = prodPrice;
+                        CashierOrderForm_type.SelectedItem = prodType;
+                        CashierOrderForm_productID.SelectedItem = selectedProductId;
+                    }
+
+                }
+            }
+        }
+
+        // enter phone tích điểm
+        private void tbPhone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string phone = tbPhone.Text.Trim();
+
+                if(phone.Length == 0)
+                {
+                    cusID = -1;
+                    points = 0;
+                    tbCusName.Text = "";
+                    tbPoints.Text = "";
+                    tbPointsUse.Text = "";
+                    tbPointsUse.Enabled = false;
+                    return;
+                }
+
+                // regex chỉ chứa số và dài 10-12 ký tự
+                if (!Regex.IsMatch(phone, @"^\d{10,12}$"))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbPhone.Focus();
+                    tbPhone.SelectAll();
+                    return;
+                }
+
+                try
+                {
+                   using (SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
+                    {
+                        connection.Open();
+                        string query = "SELECT * FROM customers WHERE phone = @Phone";
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Phone", phone);
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            cusID = (int)reader["cus_id"];
+                            points = (int)reader["points"];
+
+                            tbCusName.Text = reader["full_name"].ToString();
+                            tbPoints.Text = points.ToString();
+                            tbPointsUse.Enabled = true;
+                        }
+                        else
+                        {
+                            cusID = -1;
+                            points = 0;
+                            tbCusName.Text = "";
+                            tbPoints.Text = "";
+                            tbPointsUse.Text = "";
+                            tbPointsUse.Enabled = false;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void tbPointsUse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    String temp = tbPointsUse.Text.Trim();
+                    if (temp != "") usedPoints = int.Parse(tbPointsUse.Text.Trim());
+                    else usedPoints = 0;
+
+                    if (usedPoints < 20 && usedPoints > 0)
+                    {
+                        MessageBox.Show("Cần ít nhất 20 điểm cho mỗi đơn hàng thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (usedPoints < 0)
+                    {
+                        MessageBox.Show("Số điểm phải lớn hơn 0.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (usedPoints > points)
+                    {
+                        MessageBox.Show("Không đủ điểm để sử dụng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (usedPoints > totalPrice / 1000)
+                    {
+                        MessageBox.Show("Số điểm vượt quá tổng hoá đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    discount = usedPoints * 1000f;
+                    displayTotalPrice(discount);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Invalid value!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        
     }
 }

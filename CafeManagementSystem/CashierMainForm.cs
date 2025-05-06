@@ -46,7 +46,7 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = true;
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
 
             AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
             if (adForm != null)
@@ -60,7 +60,7 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddProducts1.Visible = true;
             cashierOrderForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
 
             AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
             if (adAddProds != null)
@@ -74,7 +74,7 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = true;
-            cashierCustomerFrom1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
 
             CashierOrderForm orderForm = cashierOrderForm1 as CashierOrderForm;
             if (orderForm != null)
@@ -88,9 +88,9 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
-            cashierCustomerFrom1.Visible = true;
+            cashierOrderHistoryFrom1.Visible = true;
 
-            CashierCustomerFrom cusForm = cashierCustomerFrom1 as CashierCustomerFrom;
+            CashierOrderHistoryFrom cusForm = cashierOrderHistoryFrom1 as CashierOrderHistoryFrom;
             if (cusForm != null)
             {
                 cusForm.refreshData();
