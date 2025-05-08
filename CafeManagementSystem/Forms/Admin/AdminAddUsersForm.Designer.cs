@@ -1,6 +1,6 @@
 ﻿namespace CafeManagementSystem
 {
-    partial class AdminAddUsers
+    partial class AdminAddUsersForm
     {
         /// <summary> 
         /// Required designer variable.

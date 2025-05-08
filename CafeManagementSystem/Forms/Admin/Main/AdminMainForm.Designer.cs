@@ -45,7 +45,7 @@
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
             this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
-            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
+            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsersForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -290,7 +290,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel panel3;
-        private AdminAddUsers adminAddUsers1;
+        private AdminAddUsersForm adminAddUsers1;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboardForm adminDashboardForm1;
         private CashierCustomerFrom cashierCustomerFrom1;

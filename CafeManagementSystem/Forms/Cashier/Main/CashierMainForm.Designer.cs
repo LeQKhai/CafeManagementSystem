@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pager_btn = new System.Windows.Forms.Button();
             this.logout_btn = new System.Windows.Forms.Button();
             this.customers_btn = new System.Windows.Forms.Button();
             this.order_btn = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
             this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
+            this.cashierPagerForm1 = new CafeManagementSystem.Forms.Cashier.CashierPagerForm();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,6 +59,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
+            this.panel2.Controls.Add(this.pager_btn);
             this.panel2.Controls.Add(this.logout_btn);
             this.panel2.Controls.Add(this.customers_btn);
             this.panel2.Controls.Add(this.order_btn);
@@ -71,6 +74,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(205, 755);
             this.panel2.TabIndex = 1;
+            // 
+            // pager_btn
+            // 
+            this.pager_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pager_btn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pager_btn.ForeColor = System.Drawing.Color.White;
+            this.pager_btn.Location = new System.Drawing.Point(7, 478);
+            this.pager_btn.Name = "pager_btn";
+            this.pager_btn.Size = new System.Drawing.Size(190, 43);
+            this.pager_btn.TabIndex = 22;
+            this.pager_btn.Text = "Pagers";
+            this.pager_btn.UseVisualStyleBackColor = true;
+            this.pager_btn.Click += new System.EventHandler(this.pager_btn_Click);
             // 
             // logout_btn
             // 
@@ -228,6 +244,7 @@
             this.panel4.Controls.Add(this.adminAddProducts1);
             this.panel4.Controls.Add(this.cashierOrderForm1);
             this.panel4.Controls.Add(this.cashierCustomerFrom1);
+            this.panel4.Controls.Add(this.cashierPagerForm1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -261,6 +278,14 @@
             this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
             this.cashierCustomerFrom1.Size = new System.Drawing.Size(1290, 755);
             this.cashierCustomerFrom1.TabIndex = 0;
+            // 
+            // cashierPagerForm1
+            // 
+            this.cashierPagerForm1.Location = new System.Drawing.Point(0, 0);
+            this.cashierPagerForm1.Name = "cashierPagerForm1";
+            this.cashierPagerForm1.Size = new System.Drawing.Size(1290, 755);
+            this.cashierPagerForm1.TabIndex = 4;
+            this.cashierPagerForm1.Visible = false;
             // 
             // CashierMainForm
             // 
@@ -306,5 +331,7 @@
         private AdminAddProducts adminAddProducts1;
         private CashierOrderForm cashierOrderForm1;
         private CashierCustomerFrom cashierCustomerFrom1;
+        private System.Windows.Forms.Button pager_btn;
+        private Forms.Cashier.CashierPagerForm cashierPagerForm1;
     }
 }

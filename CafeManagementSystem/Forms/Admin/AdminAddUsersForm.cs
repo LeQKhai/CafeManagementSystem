@@ -14,11 +14,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace CafeManagementSystem
 {
-    public partial class AdminAddUsers : UserControl
+    public partial class AdminAddUsersForm : UserControl
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
 
-        public AdminAddUsers()
+        public AdminAddUsersForm()
         {
             InitializeComponent();
 

@@ -65,7 +65,7 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierCustomerFrom1.Visible = false;
 
-            AdminAddUsers adAddUsers = adminAddUsers1 as AdminAddUsers;
+            AdminAddUsersForm adAddUsers = adminAddUsers1 as AdminAddUsersForm;
             if(adAddUsers != null)
             {
                 adAddUsers.refreshData();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeManagementSystem.Forms.Cashier;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,7 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
             cashierCustomerFrom1.Visible = false;
+            cashierPagerForm1.Visible = false;
 
             AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
             if (adForm != null)
@@ -61,6 +63,7 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = true;
             cashierOrderForm1.Visible = false;
             cashierCustomerFrom1.Visible = false;
+            cashierPagerForm1.Visible = false;
 
             AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
             if (adAddProds != null)
@@ -75,6 +78,7 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = true;
             cashierCustomerFrom1.Visible = false;
+            cashierPagerForm1.Visible = false;
 
             CashierOrderForm orderForm = cashierOrderForm1 as CashierOrderForm;
             if (orderForm != null)
@@ -89,11 +93,27 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
             cashierCustomerFrom1.Visible = true;
+            cashierPagerForm1.Visible = false;
 
             CashierCustomerFrom cusForm = cashierCustomerFrom1 as CashierCustomerFrom;
             if (cusForm != null)
             {
                 cusForm.refreshData();
+            }
+        }
+
+        private void pager_btn_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.Visible = false;
+            adminAddProducts1.Visible = false;
+            cashierOrderForm1.Visible = false;
+            cashierCustomerFrom1.Visible = false;
+            cashierPagerForm1.Visible = true;
+
+            CashierPagerForm pageForm = cashierPagerForm1 as CashierPagerForm;
+            if (pageForm!= null)
+            {
+                //pageForm.refreshData();
             }
         }
     }
