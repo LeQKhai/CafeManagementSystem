@@ -39,11 +39,12 @@ namespace CafeManagementSystem
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dash_btn_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = true;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
+            adminManageCustomersForm1.Visible = false;
             cashierCustomerFrom1.Visible = false;
 
             AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
@@ -58,11 +59,12 @@ namespace CafeManagementSystem
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void emp_btn_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = true;
             adminAddProducts1.Visible = false;
+            adminManageCustomersForm1.Visible = false;
             cashierCustomerFrom1.Visible = false;
 
             AdminAddUsersForm adAddUsers = adminAddUsers1 as AdminAddUsersForm;
@@ -72,11 +74,12 @@ namespace CafeManagementSystem
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void menu_btn_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
+            adminManageCustomersForm1.Visible = false;
             cashierCustomerFrom1.Visible = false;
 
             AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
@@ -86,23 +89,28 @@ namespace CafeManagementSystem
             }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void customer_btn_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
             cashierCustomerFrom1.Visible = true;
+            adminManageCustomersForm1.Visible = false;
 
             CashierOrderHistoryFrom cusForm = cashierCustomerFrom1 as CashierOrderHistoryFrom;
             if(cusForm != null)
             {
                 cusForm.refreshData();
             }
+        }
+
+        private void khachHang_btn_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.Visible = false;
+            adminAddUsers1.Visible = false;
+            adminAddProducts1.Visible = false;
+            cashierCustomerFrom1.Visible = false;
+            adminManageCustomersForm1.Visible = true;
         }
     }
 }

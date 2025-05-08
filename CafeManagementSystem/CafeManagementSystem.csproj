@@ -255,6 +255,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Admin\AdminManageCustomersData.cs" />
+    <Compile Include="Forms\Admin\AdminManageCustomersForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin\AdminManageCustomersForm.Designer.cs">
+      <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cashier\CashierOrderHistoryFrom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -324,6 +331,9 @@
     <Compile Include="Forms\Shared\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Admin\AdminManageCustomersForm.resx">
+      <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashier\CashierOrderHistoryFrom.resx">
       <DependentUpon>CashierOrderHistoryFrom.cs</DependentUpon>
     </EmbeddedResource>
