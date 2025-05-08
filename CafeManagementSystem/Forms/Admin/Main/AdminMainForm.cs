@@ -98,7 +98,7 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierCustomerFrom1.Visible = true;
 
-            CashierCustomerFrom cusForm = cashierCustomerFrom1 as CashierCustomerFrom;
+            CashierOrderHistoryFrom cusForm = cashierCustomerFrom1 as CashierOrderHistoryFrom;
             if(cusForm != null)
             {
                 cusForm.refreshData();

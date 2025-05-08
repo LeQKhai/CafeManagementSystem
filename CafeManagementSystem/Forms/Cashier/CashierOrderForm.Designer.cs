@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierOrderForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.CashierOrderForm_menuTable = new System.Windows.Forms.DataGridView();
@@ -49,6 +49,15 @@
             this.CashierOrderForm_type = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tbPointsUse = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbPoints = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbCusName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbPhone = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.CashierOrderForm_payBtn = new System.Windows.Forms.Button();
             this.CashierOrderForm_receiptBtn = new System.Windows.Forms.Button();
             this.CashierOrderForm_change = new System.Windows.Forms.Label();
@@ -60,7 +69,6 @@
             this.CashierOrderForm_orderTable = new System.Windows.Forms.DataGridView();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashierOrderForm_menuTable)).BeginInit();
             this.panel1.SuspendLayout();
@@ -85,14 +93,14 @@
             this.CashierOrderForm_menuTable.AllowUserToDeleteRows = false;
             this.CashierOrderForm_menuTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CashierOrderForm_menuTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashierOrderForm_menuTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CashierOrderForm_menuTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CashierOrderForm_menuTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CashierOrderForm_menuTable.EnableHeadersVisualStyles = false;
             this.CashierOrderForm_menuTable.Location = new System.Drawing.Point(27, 60);
@@ -101,6 +109,7 @@
             this.CashierOrderForm_menuTable.RowHeadersVisible = false;
             this.CashierOrderForm_menuTable.Size = new System.Drawing.Size(708, 272);
             this.CashierOrderForm_menuTable.TabIndex = 5;
+            this.CashierOrderForm_menuTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierOrderForm_menuTable_CellClick);
             // 
             // label1
             // 
@@ -132,7 +141,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(769, 329);
             this.panel1.TabIndex = 5;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // CashierOrderForm_clearBtn
             // 
@@ -155,7 +163,7 @@
             this.CashierOrderForm_removeBtn.Name = "CashierOrderForm_removeBtn";
             this.CashierOrderForm_removeBtn.Size = new System.Drawing.Size(177, 49);
             this.CashierOrderForm_removeBtn.TabIndex = 23;
-            this.CashierOrderForm_removeBtn.Text = "REMOVE";
+            this.CashierOrderForm_removeBtn.Text = "XOÁ";
             this.CashierOrderForm_removeBtn.UseVisualStyleBackColor = false;
             // 
             // CashierOrderForm_addBtn
@@ -167,7 +175,7 @@
             this.CashierOrderForm_addBtn.Name = "CashierOrderForm_addBtn";
             this.CashierOrderForm_addBtn.Size = new System.Drawing.Size(177, 49);
             this.CashierOrderForm_addBtn.TabIndex = 22;
-            this.CashierOrderForm_addBtn.Text = "ADD";
+            this.CashierOrderForm_addBtn.Text = "THÊM";
             this.CashierOrderForm_addBtn.UseVisualStyleBackColor = false;
             this.CashierOrderForm_addBtn.Click += new System.EventHandler(this.CashierOrderForm_addBtn_Click);
             // 
@@ -183,11 +191,11 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(447, 94);
+            this.label8.Location = new System.Drawing.Point(445, 94);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 22);
+            this.label8.Size = new System.Drawing.Size(88, 22);
             this.label8.TabIndex = 20;
-            this.label8.Text = "Quantity:";
+            this.label8.Text = "Số lượng:";
             // 
             // CashierOrderForm_prodName
             // 
@@ -204,9 +212,9 @@
             this.label6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(62, 143);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 22);
+            this.label6.Size = new System.Drawing.Size(80, 22);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Price ($):";
+            this.label6.Text = "Đơn giá:";
             // 
             // CashierOrderForm_price
             // 
@@ -223,9 +231,9 @@
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(14, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 22);
+            this.label3.Size = new System.Drawing.Size(130, 22);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Product Name:";
+            this.label3.Text = "Tên sản phẩm:";
             // 
             // CashierOrderForm_productID
             // 
@@ -254,7 +262,7 @@
             this.CashierOrderForm_type.Items.AddRange(new object[] {
             "Meal",
             "Drinks"});
-            this.CashierOrderForm_type.Location = new System.Drawing.Point(126, 40);
+            this.CashierOrderForm_type.Location = new System.Drawing.Point(159, 41);
             this.CashierOrderForm_type.Name = "CashierOrderForm_type";
             this.CashierOrderForm_type.Size = new System.Drawing.Size(162, 26);
             this.CashierOrderForm_type.TabIndex = 13;
@@ -264,15 +272,23 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 41);
+            this.label4.Location = new System.Drawing.Point(92, 42);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 22);
+            this.label4.Size = new System.Drawing.Size(52, 22);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Type:";
+            this.label4.Text = "Loại:";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.tbPointsUse);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.tbPoints);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.tbCusName);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.tbPhone);
+            this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.CashierOrderForm_payBtn);
             this.panel3.Controls.Add(this.CashierOrderForm_receiptBtn);
@@ -288,6 +304,93 @@
             this.panel3.Size = new System.Drawing.Size(441, 705);
             this.panel3.TabIndex = 6;
             // 
+            // tbPointsUse
+            // 
+            this.tbPointsUse.Enabled = false;
+            this.tbPointsUse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPointsUse.Location = new System.Drawing.Point(312, 374);
+            this.tbPointsUse.Name = "tbPointsUse";
+            this.tbPointsUse.Size = new System.Drawing.Size(66, 24);
+            this.tbPointsUse.TabIndex = 34;
+            this.tbPointsUse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPointsUse_KeyDown);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(228, 375);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 22);
+            this.label14.TabIndex = 33;
+            this.label14.Text = "Sử dụng:";
+            // 
+            // tbPoints
+            // 
+            this.tbPoints.Enabled = false;
+            this.tbPoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPoints.Location = new System.Drawing.Point(135, 374);
+            this.tbPoints.Name = "tbPoints";
+            this.tbPoints.Size = new System.Drawing.Size(63, 24);
+            this.tbPoints.TabIndex = 32;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(15, 375);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(121, 22);
+            this.label12.TabIndex = 31;
+            this.label12.Text = "Điểm hiện có:";
+            // 
+            // tbCusName
+            // 
+            this.tbCusName.Enabled = false;
+            this.tbCusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCusName.Location = new System.Drawing.Point(227, 334);
+            this.tbCusName.Name = "tbCusName";
+            this.tbCusName.Size = new System.Drawing.Size(151, 24);
+            this.tbCusName.TabIndex = 30;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(131, 335);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 22);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Tên KH:";
+            // 
+            // tbPhone
+            // 
+            this.tbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPhone.Location = new System.Drawing.Point(227, 298);
+            this.tbPhone.Name = "tbPhone";
+            this.tbPhone.Size = new System.Drawing.Size(151, 24);
+            this.tbPhone.TabIndex = 28;
+            this.tbPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPhone_KeyDown);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(84, 299);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(127, 22);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "SĐT tích đểm:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(23, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 24);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Order";
+            // 
             // CashierOrderForm_payBtn
             // 
             this.CashierOrderForm_payBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
@@ -297,7 +400,7 @@
             this.CashierOrderForm_payBtn.Name = "CashierOrderForm_payBtn";
             this.CashierOrderForm_payBtn.Size = new System.Drawing.Size(311, 49);
             this.CashierOrderForm_payBtn.TabIndex = 26;
-            this.CashierOrderForm_payBtn.Text = "PAY";
+            this.CashierOrderForm_payBtn.Text = "THANH TOÁN";
             this.CashierOrderForm_payBtn.UseVisualStyleBackColor = false;
             this.CashierOrderForm_payBtn.Click += new System.EventHandler(this.CashierOrderForm_payBtn_Click);
             // 
@@ -310,7 +413,7 @@
             this.CashierOrderForm_receiptBtn.Name = "CashierOrderForm_receiptBtn";
             this.CashierOrderForm_receiptBtn.Size = new System.Drawing.Size(311, 49);
             this.CashierOrderForm_receiptBtn.TabIndex = 25;
-            this.CashierOrderForm_receiptBtn.Text = "RECEIPT";
+            this.CashierOrderForm_receiptBtn.Text = "XUẤT HOÁ ĐƠN";
             this.CashierOrderForm_receiptBtn.UseVisualStyleBackColor = false;
             this.CashierOrderForm_receiptBtn.Click += new System.EventHandler(this.CashierOrderForm_receiptBtn_Click);
             // 
@@ -318,7 +421,7 @@
             // 
             this.CashierOrderForm_change.AutoSize = true;
             this.CashierOrderForm_change.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierOrderForm_change.Location = new System.Drawing.Point(261, 505);
+            this.CashierOrderForm_change.Location = new System.Drawing.Point(228, 529);
             this.CashierOrderForm_change.Name = "CashierOrderForm_change";
             this.CashierOrderForm_change.Size = new System.Drawing.Size(20, 22);
             this.CashierOrderForm_change.TabIndex = 24;
@@ -328,16 +431,16 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(140, 505);
+            this.label13.Location = new System.Drawing.Point(122, 529);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 22);
+            this.label13.Size = new System.Drawing.Size(94, 22);
             this.label13.TabIndex = 23;
-            this.label13.Text = "Change ($):";
+            this.label13.Text = "Tiền thừa:";
             // 
             // CashierOrderForm_amount
             // 
             this.CashierOrderForm_amount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierOrderForm_amount.Location = new System.Drawing.Point(252, 458);
+            this.CashierOrderForm_amount.Location = new System.Drawing.Point(232, 490);
             this.CashierOrderForm_amount.Name = "CashierOrderForm_amount";
             this.CashierOrderForm_amount.Size = new System.Drawing.Size(151, 24);
             this.CashierOrderForm_amount.TabIndex = 22;
@@ -347,27 +450,27 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(140, 458);
+            this.label11.Location = new System.Drawing.Point(123, 490);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 22);
+            this.label11.Size = new System.Drawing.Size(93, 22);
             this.label11.TabIndex = 21;
-            this.label11.Text = "Amount ($):";
+            this.label11.Text = "Nhận vào:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(161, 415);
+            this.label9.Location = new System.Drawing.Point(128, 449);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 22);
+            this.label9.Size = new System.Drawing.Size(88, 22);
             this.label9.TabIndex = 20;
-            this.label9.Text = "Price ($):";
+            this.label9.Text = "Tổng giá:";
             // 
             // CashierOrderForm_orderPrice
             // 
             this.CashierOrderForm_orderPrice.AutoSize = true;
             this.CashierOrderForm_orderPrice.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CashierOrderForm_orderPrice.Location = new System.Drawing.Point(261, 417);
+            this.CashierOrderForm_orderPrice.Location = new System.Drawing.Point(228, 451);
             this.CashierOrderForm_orderPrice.Name = "CashierOrderForm_orderPrice";
             this.CashierOrderForm_orderPrice.Size = new System.Drawing.Size(20, 22);
             this.CashierOrderForm_orderPrice.TabIndex = 19;
@@ -379,21 +482,21 @@
             this.CashierOrderForm_orderTable.AllowUserToDeleteRows = false;
             this.CashierOrderForm_orderTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CashierOrderForm_orderTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashierOrderForm_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CashierOrderForm_orderTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.CashierOrderForm_orderTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CashierOrderForm_orderTable.EnableHeadersVisualStyles = false;
             this.CashierOrderForm_orderTable.Location = new System.Drawing.Point(27, 60);
             this.CashierOrderForm_orderTable.Name = "CashierOrderForm_orderTable";
             this.CashierOrderForm_orderTable.ReadOnly = true;
             this.CashierOrderForm_orderTable.RowHeadersVisible = false;
-            this.CashierOrderForm_orderTable.Size = new System.Drawing.Size(384, 315);
+            this.CashierOrderForm_orderTable.Size = new System.Drawing.Size(384, 222);
             this.CashierOrderForm_orderTable.TabIndex = 5;
             // 
             // printDocument1
@@ -411,16 +514,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 24);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Order";
-            // 
             // CashierOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,6 +523,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "CashierOrderForm";
             this.Size = new System.Drawing.Size(1295, 755);
+            this.Load += new System.EventHandler(this.CashierOrderForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashierOrderForm_menuTable)).EndInit();
@@ -474,5 +568,13 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbCusName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbPhone;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbPoints;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbPointsUse;
+        private System.Windows.Forms.Label label14;
     }
 }
