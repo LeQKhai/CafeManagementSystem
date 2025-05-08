@@ -617,6 +617,52 @@ namespace CafeManagementSystem
             }
         }
 
-        
+        private void tbPromoCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string promoCode = tbPromoCode.Text.Trim();
+
+                try
+                {
+                    if (connect.State != ConnectionState.Open)
+                    {
+                        connect.Open();
+
+                        string query = "SELECT * FROM promotions WHERE code = @Code AND is_active = 1 " +
+                            "AND GETDATE() BETWEEN start_date AND end_date";
+                        using (SqlCommand cmd = new SqlCommand(query, connect))
+                        {
+                            cmd.Parameters.AddWithValue("@Code", promoCode);
+
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    int discount_per = (int)reader["discount_percent"];
+                                    
+                                    tbPercent.Text = discount_per.ToString();
+                                    discount = (totalPrice * discount_per)/100;
+                                    displayTotalPrice(discount);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Mã khuyến mãi không đúng hoặc hết hạn sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    tbPercent.Text = "";
+                                    discount = 0;
+                                }
+                            }
+                        }
+
+                        connect.Close();
+                    }      
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }
