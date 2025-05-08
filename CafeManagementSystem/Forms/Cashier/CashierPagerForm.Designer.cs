@@ -95,7 +95,8 @@
             // 
             // pagerContainerPanel
             // 
-            this.pagerContainerPanel.BackColor = System.Drawing.Color.White;
+            this.pagerContainerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.pagerContainerPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pagerContainerPanel.Location = new System.Drawing.Point(22, 15);
             this.pagerContainerPanel.Name = "pagerContainerPanel";
             this.pagerContainerPanel.Size = new System.Drawing.Size(1251, 447);

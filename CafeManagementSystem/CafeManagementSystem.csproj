@@ -255,6 +255,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Cashier\CashierOrderHistoryFrom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Cashier\CashierOrderHistoryFrom.Designer.cs">
+      <DependentUpon>CashierOrderHistoryFrom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Admin\AdminAddProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,12 +293,6 @@
     <Compile Include="Forms\Admin\Main\AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Cashier\CashierCustomerFrom.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\Cashier\CashierCustomerFrom.Designer.cs">
-      <DependentUpon>CashierCustomerFrom.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Cashier\Main\CashierMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -324,6 +324,9 @@
     <Compile Include="Forms\Shared\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Cashier\CashierOrderHistoryFrom.resx">
+      <DependentUpon>CashierOrderHistoryFrom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\AdminAddProducts.resx">
       <DependentUpon>AdminAddProducts.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,9 +338,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Admin\Main\AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Cashier\CashierCustomerFrom.resx">
-      <DependentUpon>CashierCustomerFrom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashier\CashierPagerForm.resx">
       <DependentUpon>CashierPagerForm.cs</DependentUpon>

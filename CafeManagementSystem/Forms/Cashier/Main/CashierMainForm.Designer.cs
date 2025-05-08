@@ -48,7 +48,6 @@
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
             this.cashierOrderHistoryFrom1 = new CafeManagementSystem.CashierOrderHistoryFrom();
-            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierCustomerFrom();
             this.cashierPagerForm1 = new CafeManagementSystem.Forms.Cashier.CashierPagerForm();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -245,7 +244,6 @@
             this.panel4.Controls.Add(this.adminAddProducts1);
             this.panel4.Controls.Add(this.cashierOrderForm1);
             this.panel4.Controls.Add(this.cashierOrderHistoryFrom1);
-            this.panel4.Controls.Add(this.cashierCustomerFrom1);
             this.panel4.Controls.Add(this.cashierPagerForm1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -333,7 +331,6 @@
         private AdminAddProducts adminAddProducts1;
         private CashierOrderForm cashierOrderForm1;
         private CashierOrderHistoryFrom cashierOrderHistoryFrom1;
-        private CashierCustomerFrom cashierCustomerFrom1;
         private System.Windows.Forms.Button pager_btn;
         private Forms.Cashier.CashierPagerForm cashierPagerForm1;
     }

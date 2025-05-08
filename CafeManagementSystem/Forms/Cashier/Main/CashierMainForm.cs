@@ -48,7 +48,6 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
             cashierOrderHistoryFrom1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
             cashierPagerForm1.Visible = false;
 
             AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
@@ -64,7 +63,6 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = true;
             cashierOrderForm1.Visible = false;
             cashierOrderHistoryFrom1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
             cashierPagerForm1.Visible = false;
 
             AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
@@ -80,7 +78,6 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = true;
             cashierOrderHistoryFrom1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
             cashierPagerForm1.Visible = false;
 
             CashierOrderForm orderForm = cashierOrderForm1 as CashierOrderForm;
@@ -96,7 +93,6 @@ namespace CafeManagementSystem
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
             cashierOrderHistoryFrom1.Visible = true;
-            cashierCustomerFrom1.Visible = true;
             cashierPagerForm1.Visible = false;
 
             CashierOrderHistoryFrom cusForm = cashierOrderHistoryFrom1 as CashierOrderHistoryFrom;
@@ -111,8 +107,8 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddProducts1.Visible = false;
             cashierOrderForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
             cashierPagerForm1.Visible = true;
+            cashierOrderHistoryFrom1.Visible = false;
 
             CashierPagerForm pageForm = cashierPagerForm1 as CashierPagerForm;
             if (pageForm!= null)
