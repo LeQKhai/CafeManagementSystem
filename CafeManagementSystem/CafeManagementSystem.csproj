@@ -281,6 +281,13 @@
     <Compile Include="AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminManageCustomersData.cs" />
+    <Compile Include="AdminManageCustomersForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminManageCustomersForm.Designer.cs">
+      <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseSetup.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -307,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminManageCustomersForm.resx">
+      <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

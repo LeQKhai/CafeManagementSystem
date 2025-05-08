@@ -33,7 +33,7 @@
             this.close = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.logout_btn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnKhachHang = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -42,9 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
-            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
+            this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
+            this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsers();
+            this.adminManageCustomersForm1 = new CafeManagementSystem.AdminManageCustomersForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -87,7 +88,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
             this.panel2.Controls.Add(this.logout_btn);
-            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.btnKhachHang);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
@@ -114,17 +115,18 @@
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
-            // button3
+            // btnKhachHang
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(7, 415);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 43);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Khách hàng";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhachHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnKhachHang.Location = new System.Drawing.Point(7, 415);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(190, 43);
+            this.btnKhachHang.TabIndex = 20;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -214,25 +216,12 @@
             this.panel3.Controls.Add(this.adminDashboardForm1);
             this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUsers1);
+            this.panel3.Controls.Add(this.adminManageCustomersForm1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(205, 45);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1295, 755);
             this.panel3.TabIndex = 1;
-            // 
-            // adminAddUsers1
-            // 
-            this.adminAddUsers1.Location = new System.Drawing.Point(0, 0);
-            this.adminAddUsers1.Name = "adminAddUsers1";
-            this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
-            this.adminAddUsers1.TabIndex = 0;
-            // 
-            // adminAddProducts1
-            // 
-            this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
-            this.adminAddProducts1.Name = "adminAddProducts1";
-            this.adminAddProducts1.Size = new System.Drawing.Size(1295, 755);
-            this.adminAddProducts1.TabIndex = 1;
             // 
             // adminDashboardForm1
             // 
@@ -241,6 +230,28 @@
             this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
             this.adminDashboardForm1.TabIndex = 2;
             this.adminDashboardForm1.Load += new System.EventHandler(this.adminDashboardForm1_Load);
+            // 
+            // adminAddProducts1
+            // 
+            this.adminAddProducts1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddProducts1.Name = "adminAddProducts1";
+            this.adminAddProducts1.Size = new System.Drawing.Size(1295, 755);
+            this.adminAddProducts1.TabIndex = 1;
+            // 
+            // adminAddUsers1
+            // 
+            this.adminAddUsers1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddUsers1.Name = "adminAddUsers1";
+            this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
+            this.adminAddUsers1.TabIndex = 0;
+            // 
+            // adminManageCustomersForm1
+            // 
+            this.adminManageCustomersForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
+            this.adminManageCustomersForm1.Location = new System.Drawing.Point(0, 0);
+            this.adminManageCustomersForm1.Name = "adminManageCustomersForm1";
+            this.adminManageCustomersForm1.Size = new System.Drawing.Size(1295, 755);
+            this.adminManageCustomersForm1.TabIndex = 3;
             // 
             // AdminMainForm
             // 
@@ -276,12 +287,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnKhachHang;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel panel3;
         private AdminAddUsers adminAddUsers1;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboardForm adminDashboardForm1;
+        private AdminManageCustomersForm adminManageCustomersForm1;
     }
 }

@@ -63,5 +63,13 @@ namespace CafeManagementSystem
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.Visible = false;
+            adminAddUsers1.Visible = false;
+            adminAddProducts1.Visible = false;
+            adminManageCustomersForm1.Visible = true;
+        }
     }
 }
