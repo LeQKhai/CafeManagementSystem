@@ -29,63 +29,64 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.CashierCustomerForm_customerTable = new System.Windows.Forms.DataGridView();
+            this.dgvOders = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbCusName = new System.Windows.Forms.TextBox();
+            this.dgvListProd = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tbTotalPrice = new System.Windows.Forms.TextBox();
+            this.tbChange = new System.Windows.Forms.TextBox();
+            this.tbAmount = new System.Windows.Forms.TextBox();
+            this.tbDate = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierCustomerForm_customerTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOders)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListProd)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.CashierCustomerForm_customerTable);
+            this.panel2.Controls.Add(this.dgvOders);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(26, 23);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(832, 704);
             this.panel2.TabIndex = 5;
             // 
-            // CashierCustomerForm_customerTable
+            // dgvOders
             // 
-            this.CashierCustomerForm_customerTable.AllowUserToAddRows = false;
-            this.CashierCustomerForm_customerTable.AllowUserToDeleteRows = false;
-            this.CashierCustomerForm_customerTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.CashierCustomerForm_customerTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CashierCustomerForm_customerTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.CashierCustomerForm_customerTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CashierCustomerForm_customerTable.EnableHeadersVisualStyles = false;
-            this.CashierCustomerForm_customerTable.Location = new System.Drawing.Point(27, 60);
-            this.CashierCustomerForm_customerTable.Name = "CashierCustomerForm_customerTable";
-            this.CashierCustomerForm_customerTable.ReadOnly = true;
-            this.CashierCustomerForm_customerTable.RowHeadersVisible = false;
-            this.CashierCustomerForm_customerTable.Size = new System.Drawing.Size(778, 618);
-            this.CashierCustomerForm_customerTable.TabIndex = 5;
+            this.dgvOders.AllowUserToAddRows = false;
+            this.dgvOders.AllowUserToDeleteRows = false;
+            this.dgvOders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(178)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvOders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOders.EnableHeadersVisualStyles = false;
+            this.dgvOders.Location = new System.Drawing.Point(27, 60);
+            this.dgvOders.Name = "dgvOders";
+            this.dgvOders.ReadOnly = true;
+            this.dgvOders.RowHeadersVisible = false;
+            this.dgvOders.Size = new System.Drawing.Size(778, 618);
+            this.dgvOders.TabIndex = 5;
+            this.dgvOders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CashierCustomerForm_customerTable_CellClick);
             // 
             // label1
             // 
@@ -99,17 +100,17 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbDate);
+            this.panel1.Controls.Add(this.tbChange);
+            this.panel1.Controls.Add(this.tbAmount);
+            this.panel1.Controls.Add(this.tbTotalPrice);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.tbCusName);
+            this.panel1.Controls.Add(this.dgvListProd);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(864, 23);
@@ -127,14 +128,6 @@
             this.label8.TabIndex = 20;
             this.label8.Text = "Ngày mua hàng:";
             // 
-            // textBox5
-            // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(177, 570);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(150, 26);
-            this.textBox5.TabIndex = 19;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -144,14 +137,6 @@
             this.label9.Size = new System.Drawing.Size(99, 20);
             this.label9.TabIndex = 18;
             this.label9.Text = "Số tiền thừa:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(177, 523);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(150, 26);
-            this.textBox6.TabIndex = 17;
             // 
             // label6
             // 
@@ -163,14 +148,6 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Số tiền nhận:";
             // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(177, 481);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 26);
-            this.textBox3.TabIndex = 15;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -180,14 +157,6 @@
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 14;
             this.label7.Text = "Tổng tiền:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(177, 434);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(150, 26);
-            this.textBox4.TabIndex = 13;
             // 
             // label5
             // 
@@ -199,21 +168,23 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Tên khách hàng:";
             // 
-            // textBox2
+            // tbCusName
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(177, 390);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 26);
-            this.textBox2.TabIndex = 11;
+            this.tbCusName.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbCusName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCusName.Location = new System.Drawing.Point(177, 390);
+            this.tbCusName.Name = "tbCusName";
+            this.tbCusName.ReadOnly = true;
+            this.tbCusName.Size = new System.Drawing.Size(192, 26);
+            this.tbCusName.TabIndex = 11;
             // 
-            // dataGridView1
+            // dgvListProd
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 125);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(372, 231);
-            this.dataGridView1.TabIndex = 9;
+            this.dgvListProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListProd.Location = new System.Drawing.Point(14, 125);
+            this.dgvListProd.Name = "dgvListProd";
+            this.dgvListProd.Size = new System.Drawing.Size(372, 231);
+            this.dgvListProd.TabIndex = 9;
             // 
             // label3
             // 
@@ -240,6 +211,46 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // tbTotalPrice
+            // 
+            this.tbTotalPrice.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbTotalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotalPrice.Location = new System.Drawing.Point(177, 434);
+            this.tbTotalPrice.Name = "tbTotalPrice";
+            this.tbTotalPrice.ReadOnly = true;
+            this.tbTotalPrice.Size = new System.Drawing.Size(192, 26);
+            this.tbTotalPrice.TabIndex = 21;
+            // 
+            // tbChange
+            // 
+            this.tbChange.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbChange.Location = new System.Drawing.Point(177, 523);
+            this.tbChange.Name = "tbChange";
+            this.tbChange.ReadOnly = true;
+            this.tbChange.Size = new System.Drawing.Size(192, 26);
+            this.tbChange.TabIndex = 23;
+            // 
+            // tbAmount
+            // 
+            this.tbAmount.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAmount.Location = new System.Drawing.Point(177, 479);
+            this.tbAmount.Name = "tbAmount";
+            this.tbAmount.ReadOnly = true;
+            this.tbAmount.Size = new System.Drawing.Size(192, 26);
+            this.tbAmount.TabIndex = 22;
+            // 
+            // tbDate
+            // 
+            this.tbDate.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDate.Location = new System.Drawing.Point(177, 570);
+            this.tbDate.Name = "tbDate";
+            this.tbDate.ReadOnly = true;
+            this.tbDate.Size = new System.Drawing.Size(192, 26);
+            this.tbDate.TabIndex = 24;
+            // 
             // CashierOrderHistoryFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,10 +261,10 @@
             this.Size = new System.Drawing.Size(1295, 755);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CashierCustomerForm_customerTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOders)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListProd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,22 +272,22 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView CashierCustomerForm_customerTable;
+        private System.Windows.Forms.DataGridView dgvOders;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbCusName;
+        private System.Windows.Forms.DataGridView dgvListProd;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbDate;
+        private System.Windows.Forms.TextBox tbChange;
+        private System.Windows.Forms.TextBox tbAmount;
+        private System.Windows.Forms.TextBox tbTotalPrice;
     }
 }

@@ -39,13 +39,19 @@ namespace CafeManagementSystem
             }
         }
 
-        private void dash_btn_Click(object sender, EventArgs e)
+        private void adminDashboardForm1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = true;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
+            adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
 
             AdminDashboardForm adForm = adminDashboardForm1 as AdminDashboardForm;
             if(adForm != null)
@@ -54,18 +60,13 @@ namespace CafeManagementSystem
             }
         }
 
-        private void adminDashboardForm1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void emp_btn_Click(object sender, EventArgs e)
+        private void btnUser_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = true;
             adminAddProducts1.Visible = false;
+            adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
 
             AdminAddUsersForm adAddUsers = adminAddUsers1 as AdminAddUsersForm;
             if(adAddUsers != null)
@@ -74,33 +75,51 @@ namespace CafeManagementSystem
             }
         }
 
-        private void menu_btn_Click(object sender, EventArgs e)
+        private void btnProduct_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
+            adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
+
 
             AdminAddProducts adAddProds = adminAddProducts1 as AdminAddProducts;
-            if(adAddProds != null)
+            if (adAddProds != null)
             {
                 adAddProds.refreshData();
             }
         }
 
-        private void customer_btn_Click(object sender, EventArgs e)
+        private void btnOder_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
-            cashierCustomerFrom1.Visible = true;
+            cashierOrderHistoryFrom1.Visible = true;
+            adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
 
-            CashierOrderHistoryFrom cusForm = cashierCustomerFrom1 as CashierOrderHistoryFrom;
-            if(cusForm != null)
+            CashierOrderHistoryFrom orderHistoryForm = cashierOrderHistoryFrom1 as CashierOrderHistoryFrom;
+            if (orderHistoryForm != null)
             {
-                cusForm.refreshData();
+                orderHistoryForm.refreshData();
+            }
+        }
+
+        private void btnPromotion_Click(object sender, EventArgs e)
+        {
+            adminDashboardForm1.Visible = false;
+            adminAddUsers1.Visible = false;
+            adminAddProducts1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
+            adminAddPromotions1.Visible = true;
+            adminManageCustomersForm1.Visible = false;
+
+            AdminAddPromotions promotionForm = adminAddPromotions1 as AdminAddPromotions;
+            if (promotionForm != null)
+            {
+                promotionForm.refreshData();
             }
         }
 
@@ -109,8 +128,9 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
-            cashierCustomerFrom1.Visible = false;
             adminManageCustomersForm1.Visible = true;
+            adminAddPromotions1.Visible = false;
+
         }
     }
 }

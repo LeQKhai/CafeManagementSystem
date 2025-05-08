@@ -33,20 +33,22 @@
             this.close = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.khachHang_btn = new System.Windows.Forms.Button();
+            this.btnPromotion = new System.Windows.Forms.Button();
             this.logout_btn = new System.Windows.Forms.Button();
-            this.customer_btn = new System.Windows.Forms.Button();
-            this.menu_btn = new System.Windows.Forms.Button();
-            this.emp_button = new System.Windows.Forms.Button();
-            this.dash_button = new System.Windows.Forms.Button();
+            this.btnOder = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             this.username = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.adminDashboardForm1 = new CafeManagementSystem.AdminDashboardForm();
-            this.cashierCustomerFrom1 = new CafeManagementSystem.CashierOrderHistoryFrom();
+            this.cashierOrderHistoryFrom1 = new CafeManagementSystem.CashierOrderHistoryFrom();
             this.adminAddProducts1 = new CafeManagementSystem.AdminAddProducts();
             this.adminAddUsers1 = new CafeManagementSystem.AdminAddUsersForm();
+            this.adminAddPromotions1 = new CafeManagementSystem.AdminAddPromotions();
             this.adminManageCustomersForm1 = new CafeManagementSystem.AdminManageCustomersForm();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -90,11 +92,12 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
             this.panel2.Controls.Add(this.khachHang_btn);
+            this.panel2.Controls.Add(this.btnPromotion);
             this.panel2.Controls.Add(this.logout_btn);
-            this.panel2.Controls.Add(this.customer_btn);
-            this.panel2.Controls.Add(this.menu_btn);
-            this.panel2.Controls.Add(this.emp_button);
-            this.panel2.Controls.Add(this.dash_button);
+            this.panel2.Controls.Add(this.btnOder);
+            this.panel2.Controls.Add(this.btnProduct);
+            this.panel2.Controls.Add(this.btnUser);
+            this.panel2.Controls.Add(this.btnDashboard);
             this.panel2.Controls.Add(this.username);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
@@ -110,13 +113,26 @@
             this.khachHang_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.khachHang_btn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.khachHang_btn.ForeColor = System.Drawing.Color.White;
-            this.khachHang_btn.Location = new System.Drawing.Point(6, 476);
+            this.khachHang_btn.Location = new System.Drawing.Point(6, 540);
             this.khachHang_btn.Name = "khachHang_btn";
             this.khachHang_btn.Size = new System.Drawing.Size(190, 43);
             this.khachHang_btn.TabIndex = 22;
             this.khachHang_btn.Text = "Khách Hàng";
             this.khachHang_btn.UseVisualStyleBackColor = true;
             this.khachHang_btn.Click += new System.EventHandler(this.khachHang_btn_Click);
+            // 
+            // btnPromotion
+            // 
+            this.btnPromotion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromotion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPromotion.ForeColor = System.Drawing.Color.White;
+            this.btnPromotion.Location = new System.Drawing.Point(6, 478);
+            this.btnPromotion.Name = "btnPromotion";
+            this.btnPromotion.Size = new System.Drawing.Size(190, 43);
+            this.btnPromotion.TabIndex = 22;
+            this.btnPromotion.Text = "Khuyến mãi";
+            this.btnPromotion.UseVisualStyleBackColor = true;
+            this.btnPromotion.Click += new System.EventHandler(this.btnPromotion_Click);
             // 
             // logout_btn
             // 
@@ -131,57 +147,57 @@
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
-            // customer_btn
+            // btnOder
             // 
-            this.customer_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customer_btn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customer_btn.ForeColor = System.Drawing.Color.White;
-            this.customer_btn.Location = new System.Drawing.Point(7, 415);
-            this.customer_btn.Name = "customer_btn";
-            this.customer_btn.Size = new System.Drawing.Size(190, 43);
-            this.customer_btn.TabIndex = 20;
-            this.customer_btn.Text = "Lịch sử đơn hàng";
-            this.customer_btn.UseVisualStyleBackColor = true;
-            this.customer_btn.Click += new System.EventHandler(this.customer_btn_Click);
+            this.btnOder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOder.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOder.ForeColor = System.Drawing.Color.White;
+            this.btnOder.Location = new System.Drawing.Point(7, 415);
+            this.btnOder.Name = "btnOder";
+            this.btnOder.Size = new System.Drawing.Size(190, 43);
+            this.btnOder.TabIndex = 20;
+            this.btnOder.Text = "Đơn hàng";
+            this.btnOder.UseVisualStyleBackColor = true;
+            this.btnOder.Click += new System.EventHandler(this.btnOder_Click);
             // 
-            // menu_btn
+            // btnProduct
             // 
-            this.menu_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.menu_btn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menu_btn.ForeColor = System.Drawing.Color.White;
-            this.menu_btn.Location = new System.Drawing.Point(7, 354);
-            this.menu_btn.Name = "menu_btn";
-            this.menu_btn.Size = new System.Drawing.Size(190, 43);
-            this.menu_btn.TabIndex = 19;
-            this.menu_btn.Text = "Menu";
-            this.menu_btn.UseVisualStyleBackColor = true;
-            this.menu_btn.Click += new System.EventHandler(this.menu_btn_Click);
+            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProduct.ForeColor = System.Drawing.Color.White;
+            this.btnProduct.Location = new System.Drawing.Point(7, 354);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(190, 43);
+            this.btnProduct.TabIndex = 19;
+            this.btnProduct.Text = "Menu";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // emp_button
+            // btnUser
             // 
-            this.emp_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emp_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emp_button.ForeColor = System.Drawing.Color.White;
-            this.emp_button.Location = new System.Drawing.Point(6, 292);
-            this.emp_button.Name = "emp_button";
-            this.emp_button.Size = new System.Drawing.Size(190, 43);
-            this.emp_button.TabIndex = 18;
-            this.emp_button.Text = "Thêm nhân viên";
-            this.emp_button.UseVisualStyleBackColor = true;
-            this.emp_button.Click += new System.EventHandler(this.emp_btn_Click);
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.ForeColor = System.Drawing.Color.White;
+            this.btnUser.Location = new System.Drawing.Point(6, 292);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(190, 43);
+            this.btnUser.TabIndex = 18;
+            this.btnUser.Text = "Thêm nhân viên";
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
-            // dash_button
+            // btnDashboard
             // 
-            this.dash_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dash_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dash_button.ForeColor = System.Drawing.Color.White;
-            this.dash_button.Location = new System.Drawing.Point(6, 231);
-            this.dash_button.Name = "dash_button";
-            this.dash_button.Size = new System.Drawing.Size(190, 43);
-            this.dash_button.TabIndex = 17;
-            this.dash_button.Text = "Trang chủ";
-            this.dash_button.UseVisualStyleBackColor = true;
-            this.dash_button.Click += new System.EventHandler(this.dash_btn_Click);
+            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashboard.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.White;
+            this.btnDashboard.Location = new System.Drawing.Point(6, 231);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(190, 43);
+            this.btnDashboard.TabIndex = 17;
+            this.btnDashboard.Text = "Trang chủ";
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // username
             // 
@@ -230,9 +246,10 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.adminDashboardForm1);
-            this.panel3.Controls.Add(this.cashierCustomerFrom1);
+            this.panel3.Controls.Add(this.cashierOrderHistoryFrom1);
             this.panel3.Controls.Add(this.adminAddProducts1);
             this.panel3.Controls.Add(this.adminAddUsers1);
+            this.panel3.Controls.Add(this.adminAddPromotions1);
             this.panel3.Controls.Add(this.adminManageCustomersForm1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(205, 45);
@@ -242,17 +259,17 @@
             // 
             // adminDashboardForm1
             // 
-            this.adminDashboardForm1.Location = new System.Drawing.Point(4, 0);
+            this.adminDashboardForm1.Location = new System.Drawing.Point(6, 0);
             this.adminDashboardForm1.Name = "adminDashboardForm1";
             this.adminDashboardForm1.Size = new System.Drawing.Size(1295, 755);
             this.adminDashboardForm1.TabIndex = 3;
             // 
-            // cashierCustomerFrom1
+            // cashierOrderHistoryFrom1
             // 
-            this.cashierCustomerFrom1.Location = new System.Drawing.Point(0, 0);
-            this.cashierCustomerFrom1.Name = "cashierCustomerFrom1";
-            this.cashierCustomerFrom1.Size = new System.Drawing.Size(1303, 755);
-            this.cashierCustomerFrom1.TabIndex = 2;
+            this.cashierOrderHistoryFrom1.Location = new System.Drawing.Point(-2, 0);
+            this.cashierOrderHistoryFrom1.Name = "cashierOrderHistoryFrom1";
+            this.cashierOrderHistoryFrom1.Size = new System.Drawing.Size(1303, 755);
+            this.cashierOrderHistoryFrom1.TabIndex = 2;
             // 
             // adminAddProducts1
             // 
@@ -267,6 +284,13 @@
             this.adminAddUsers1.Name = "adminAddUsers1";
             this.adminAddUsers1.Size = new System.Drawing.Size(1295, 755);
             this.adminAddUsers1.TabIndex = 0;
+            // 
+            // adminAddPromotions1
+            // 
+            this.adminAddPromotions1.Location = new System.Drawing.Point(0, 0);
+            this.adminAddPromotions1.Name = "adminAddPromotions1";
+            this.adminAddPromotions1.Size = new System.Drawing.Size(1303, 755);
+            this.adminAddPromotions1.TabIndex = 4;
             // 
             // adminManageCustomersForm1
             // 
@@ -306,18 +330,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label close;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button emp_button;
-        private System.Windows.Forms.Button dash_button;
+        private System.Windows.Forms.Button btnUser;
+        private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Label username;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button customer_btn;
-        private System.Windows.Forms.Button menu_btn;
+        private System.Windows.Forms.Button btnOder;
+        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button logout_btn;
         private System.Windows.Forms.Panel panel3;
         private AdminAddUsersForm adminAddUsers1;
         private AdminAddProducts adminAddProducts1;
         private AdminDashboardForm adminDashboardForm1;
-        private CashierOrderHistoryFrom cashierCustomerFrom1;
+        private CashierOrderHistoryFrom cashierOrderHistoryFrom1;
+        private System.Windows.Forms.Button btnPromotion;
+        private AdminAddPromotions adminAddPromotions1;
         private System.Windows.Forms.Button khachHang_btn;
         private AdminManageCustomersForm adminManageCustomersForm1;
     }
