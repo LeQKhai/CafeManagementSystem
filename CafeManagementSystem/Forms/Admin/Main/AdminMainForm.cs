@@ -39,11 +39,6 @@ namespace CafeManagementSystem
             }
         }
 
-        private void adminDashboardForm1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             adminDashboardForm1.Visible = true;
@@ -65,6 +60,7 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = true;
             adminAddProducts1.Visible = false;
+            cashierOrderHistoryFrom1.Visible = false;
             adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
 
@@ -80,6 +76,7 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = true;
+            cashierOrderHistoryFrom1.Visible = false;
             adminAddPromotions1.Visible = false;
             adminManageCustomersForm1.Visible = false;
 
@@ -128,8 +125,9 @@ namespace CafeManagementSystem
             adminDashboardForm1.Visible = false;
             adminAddUsers1.Visible = false;
             adminAddProducts1.Visible = false;
-            adminManageCustomersForm1.Visible = true;
+            cashierOrderHistoryFrom1.Visible = false;
             adminAddPromotions1.Visible = false;
+            adminManageCustomersForm1.Visible = true;
 
         }
     }
