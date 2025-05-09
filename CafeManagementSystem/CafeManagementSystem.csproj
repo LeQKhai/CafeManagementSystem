@@ -267,11 +267,11 @@
     <Compile Include="Models\Admin\AdminAddPromotions.Designer.cs">
       <DependentUpon>AdminAddPromotions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\AdminManageCustomersData.cs" />
-    <Compile Include="Forms\Admin\AdminManageCustomersForm.cs">
+    <Compile Include="Models\Shared\AdminManageCustomersData.cs" />
+    <Compile Include="Forms\Shared\AdminManageCustomersForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\Admin\AdminManageCustomersForm.Designer.cs">
+    <Compile Include="Forms\Shared\AdminManageCustomersForm.Designer.cs">
       <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Cashier\CashierOrderHistoryFrom.cs">
@@ -350,7 +350,7 @@
     <EmbeddedResource Include="Models\Admin\AdminAddPromotions.resx">
       <DependentUpon>AdminAddPromotions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Admin\AdminManageCustomersForm.resx">
+    <EmbeddedResource Include="Forms\Shared\AdminManageCustomersForm.resx">
       <DependentUpon>AdminManageCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cashier\CashierOrderHistoryFrom.resx">

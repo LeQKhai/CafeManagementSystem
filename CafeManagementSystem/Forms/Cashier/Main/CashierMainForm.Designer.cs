@@ -49,6 +49,8 @@
             this.cashierOrderForm1 = new CafeManagementSystem.CashierOrderForm();
             this.cashierOrderHistoryFrom1 = new CafeManagementSystem.CashierOrderHistoryFrom();
             this.cashierPagerForm1 = new CafeManagementSystem.Forms.Cashier.CashierPagerForm();
+            this.adminManageCustomersForm1 = new CafeManagementSystem.AdminManageCustomersForm();
+            this.btnKhachHang = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,6 +61,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(76)))), ((int)(((byte)(62)))));
+            this.panel2.Controls.Add(this.btnKhachHang);
             this.panel2.Controls.Add(this.pager_btn);
             this.panel2.Controls.Add(this.logout_btn);
             this.panel2.Controls.Add(this.customers_btn);
@@ -245,6 +248,7 @@
             this.panel4.Controls.Add(this.cashierOrderForm1);
             this.panel4.Controls.Add(this.cashierOrderHistoryFrom1);
             this.panel4.Controls.Add(this.cashierPagerForm1);
+            this.panel4.Controls.Add(this.adminManageCustomersForm1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -286,6 +290,27 @@
             this.cashierPagerForm1.Size = new System.Drawing.Size(1290, 755);
             this.cashierPagerForm1.TabIndex = 4;
             this.cashierPagerForm1.Visible = false;
+            // 
+            // adminManageCustomersForm1
+            // 
+            this.adminManageCustomersForm1.BackColor = System.Drawing.SystemColors.Control;
+            this.adminManageCustomersForm1.Location = new System.Drawing.Point(0, 0);
+            this.adminManageCustomersForm1.Name = "adminManageCustomersForm1";
+            this.adminManageCustomersForm1.Size = new System.Drawing.Size(1295, 755);
+            this.adminManageCustomersForm1.TabIndex = 4;
+            // 
+            // btnKhachHang
+            // 
+            this.btnKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKhachHang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnKhachHang.Location = new System.Drawing.Point(6, 536);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(194, 43);
+            this.btnKhachHang.TabIndex = 23;
+            this.btnKhachHang.Text = "Khách hàng";
+            this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
             // 
             // CashierMainForm
             // 
@@ -333,5 +358,7 @@
         private CashierOrderHistoryFrom cashierOrderHistoryFrom1;
         private System.Windows.Forms.Button pager_btn;
         private Forms.Cashier.CashierPagerForm cashierPagerForm1;
+        private AdminManageCustomersForm adminManageCustomersForm1;
+        private System.Windows.Forms.Button btnKhachHang;
     }
 }
