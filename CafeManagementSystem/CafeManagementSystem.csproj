@@ -267,7 +267,7 @@
     <Compile Include="Models\Admin\AdminAddPromotions.Designer.cs">
       <DependentUpon>AdminAddPromotions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Shared\AdminManageCustomersData.cs" />
+    <Compile Include="Models\Shared\CustomerData.cs" />
     <Compile Include="Forms\Shared\AdminManageCustomersForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,14 +292,14 @@
     <Compile Include="Forms\Cashier\CashierPagerForm.Designer.cs">
       <DependentUpon>CashierPagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\AdminAddProductsData.cs" />
+    <Compile Include="Models\Shared\ProductsData.cs" />
     <Compile Include="Forms\Admin\AdminAddUsersForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Admin\AdminAddUsersForm.Designer.cs">
       <DependentUpon>AdminAddUsersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin\AdminAddUsersData.cs" />
+    <Compile Include="Models\Shared\UserData.cs" />
     <Compile Include="Forms\Admin\AdminDashboardForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

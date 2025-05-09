@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CafeManagementSystem
 {
-    internal class AdminAddUsersData
+    internal class UserData
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
 
@@ -21,9 +21,9 @@ namespace CafeManagementSystem
         public string Image { get; set; }
         public string DateRegistered { get; set; }
 
-        public List<AdminAddUsersData> UsersListData()
+        public List<UserData> UsersListData()
         {
-            List<AdminAddUsersData> listData = new List<AdminAddUsersData>();
+            List<UserData> listData = new List<UserData>();
 
             if (connect.State != ConnectionState.Open)
             {
@@ -38,7 +38,7 @@ namespace CafeManagementSystem
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         while (reader.Read()) { 
-                           AdminAddUsersData userData = new AdminAddUsersData();
+                           UserData userData = new UserData();
                             userData.ID = (int)reader["id"];
                             userData.Username = reader["username"].ToString();
                             userData.Password = reader["password"].ToString();

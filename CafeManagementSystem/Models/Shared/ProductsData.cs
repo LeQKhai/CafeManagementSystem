@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace CafeManagementSystem
 {
-    internal class AdminAddProductsData
+    internal class ProductsData
     {
         public int ID { get; set; } //0 
         public string ProductID { get; set; } //1
@@ -23,9 +23,9 @@ namespace CafeManagementSystem
 
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
 
-        public List<AdminAddProductsData> productsListData()
+        public List<ProductsData> productsListData()
         {
-            List<AdminAddProductsData> listData = new List<AdminAddProductsData>();
+            List<ProductsData> listData = new List<ProductsData>();
 
             if (connect.State == ConnectionState.Closed)
             {
@@ -40,7 +40,7 @@ namespace CafeManagementSystem
                         SqlDataReader reader = cmd.ExecuteReader();
                         while (reader.Read()) 
                         {
-                            AdminAddProductsData apd = new AdminAddProductsData();
+                            ProductsData apd = new ProductsData();
 
                             apd.ID = (int)reader["id"];
                             apd.ProductID = reader["prod_id"].ToString();
@@ -70,9 +70,9 @@ namespace CafeManagementSystem
             return listData; 
         }
 
-        public List<AdminAddProductsData> availableProductsData()
+        public List<ProductsData> availableProductsData()
         {
-            List<AdminAddProductsData> listData = new List<AdminAddProductsData>();
+            List<ProductsData> listData = new List<ProductsData>();
 
             if(connect.State == ConnectionState.Closed)
             {
@@ -90,7 +90,7 @@ namespace CafeManagementSystem
 
                         while (reader.Read())
                         {
-                            AdminAddProductsData apd = new AdminAddProductsData();
+                            ProductsData apd = new ProductsData();
 
                             apd.ID = (int)reader["id"];
                             apd.ProductID = reader["prod_id"].ToString();

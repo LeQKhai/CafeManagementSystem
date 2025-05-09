@@ -30,8 +30,8 @@ namespace CafeManagementSystem
             {
                 try
                 {
-                    AdminManageCustomersData cusData = new AdminManageCustomersData();
-                    List<AdminManageCustomersData> listData = cusData.GetCustomers();
+                    CustomerData cusData = new CustomerData();
+                    List<CustomerData> listData = cusData.GetCustomers();
 
                     dgvCustomers.DataSource = listData;
                 }

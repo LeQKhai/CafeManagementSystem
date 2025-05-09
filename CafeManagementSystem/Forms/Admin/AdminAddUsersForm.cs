@@ -36,8 +36,8 @@ namespace CafeManagementSystem
 
         public void displayAddUsersData()
         {
-            AdminAddUsersData usersData = new AdminAddUsersData();
-            List<AdminAddUsersData> listData = usersData.UsersListData();
+            UserData usersData = new UserData();
+            List<UserData> listData = usersData.UsersListData();
 
             dataGridView1.DataSource = listData;
             dataGridView1.Rows[0].Selected = false;

@@ -9,7 +9,7 @@ using System.CodeDom;
 
 namespace CafeManagementSystem
 {
-    internal class AdminManageCustomersData
+    internal class CustomerData
     {
         SqlConnection cnStr = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
 
@@ -21,9 +21,9 @@ namespace CafeManagementSystem
         public DateTime DateRegistered { get; set; }
         public int Point { get; set; }
 
-        public List<AdminManageCustomersData> GetCustomers()
+        public List<CustomerData> GetCustomers()
         {
-            List<AdminManageCustomersData> customers = new List<AdminManageCustomersData>();
+            List<CustomerData> customers = new List<CustomerData>();
             cnStr.Open();
             string selectData = "SELECT * FROM customers";
             using (SqlCommand cmd = new SqlCommand(selectData, cnStr))
@@ -31,7 +31,7 @@ namespace CafeManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    AdminManageCustomersData cus = new AdminManageCustomersData();
+                    CustomerData cus = new CustomerData();
                     cus.ID = (int)reader["cus_id"];
                     cus.Name = reader["full_name"].ToString();
                     cus.Phone = reader["phone"].ToString();

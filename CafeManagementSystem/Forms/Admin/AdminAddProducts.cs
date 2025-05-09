@@ -49,8 +49,8 @@ namespace CafeManagementSystem
 
         public void displayData()
         {
-            AdminAddProductsData prodData = new AdminAddProductsData();
-            List<AdminAddProductsData> listData = prodData.productsListData();
+            ProductsData prodData = new ProductsData();
+            List<ProductsData> listData = prodData.productsListData();
 
             dataGridView1.DataSource = listData;
             if (dataGridView1.Rows.Count > 0)
