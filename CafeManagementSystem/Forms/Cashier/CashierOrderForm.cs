@@ -335,7 +335,9 @@ namespace CafeManagementSystem
                         cmd.ExecuteNonQuery();
                     }
 
-                    MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Gán đơn hàng cho pager tự động
+                    int assignedPagerId = AssignOrderToPager(insertedOrderID);
+                    MessageBox.Show($"Thanh toán thành công! Đơn hàng được gán cho Pager {assignedPagerId}.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Reset UI
                     CashierOrderForm_orderPrice.Text = "";
@@ -663,5 +665,57 @@ namespace CafeManagementSystem
             }
         }
 
+        // set pager khi thanh toán
+
+        private int AssignOrderToPager(int orderId)
+        {
+            int assignedPagerId = -1;
+            using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
+            {
+                conn.Open();
+                // Tìm pager còn trống (Status = 0) có PagerID nhỏ nhất
+                string selectQuery = "SELECT TOP 1 PagerID FROM Pagers WHERE Status = 0 ORDER BY PagerID ASC";
+                using (SqlCommand cmd = new SqlCommand(selectQuery, conn))
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        assignedPagerId = reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        // Nếu không có pager trống, tạo một pager mới
+                        string insertQuery = "INSERT INTO Pagers (PagerID, Status) VALUES ((SELECT ISNULL(MAX(PagerID), 0) + 1 FROM Pagers), 0)";
+                        using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+                        {
+                            insertCmd.ExecuteNonQuery();
+                        }
+                        string getLastIdQuery = "SELECT MAX(PagerID) FROM Pagers";
+                        using (SqlCommand getIdCmd = new SqlCommand(getLastIdQuery, conn))
+                        {
+                            assignedPagerId = (int)getIdCmd.ExecuteScalar();
+                        }
+                    }
+                }
+
+                // Cập nhật trạng thái pager thành 1 (có đơn, chưa làm xong)
+                string updateQuery = "UPDATE Pagers SET Status = 1 WHERE PagerID = @PagerID";
+                using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PagerID", assignedPagerId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Gán đơn hàng vào bảng liên kết (nếu có bảng pager_orders)
+                string insertLinkQuery = "INSERT INTO pager_orders (pager_id, order_id) VALUES (@PagerID, @OrderID)";
+                using (SqlCommand cmd = new SqlCommand(insertLinkQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PagerID", assignedPagerId);
+                    cmd.Parameters.AddWithValue("@OrderID", orderId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return assignedPagerId;
+        }
     }
 }

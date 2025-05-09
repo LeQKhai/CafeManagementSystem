@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CafeManagementSystem.Forms.Cashier
 {
@@ -22,12 +23,14 @@ namespace CafeManagementSystem.Forms.Cashier
             LoadPagers();
         }
 
-        private void LoadPagers()
+        public void LoadPagers()
         {
             pagerContainerPanel.Controls.Clear();
             pagerPanels.Clear();
             var pagers = pagerService.GetAllPagers();
             int xPos = 10, yPos = 10;
+            int panelCountInRow = 0;
+
             foreach (var pager in pagers)
             {
                 Panel panel = new Panel
@@ -41,43 +44,77 @@ namespace CafeManagementSystem.Forms.Cashier
                     Text = pager.PagerID.ToString(),
                     TextAlign = ContentAlignment.MiddleCenter,
                     Size = new Size(80, 80),
-                    ForeColor = Color.White
+                    ForeColor = Color.White,
+                    BackColor = Color.Transparent
                 };
-                panel.Controls.Add(pagerLabel);
+                // Gán sự kiện Click
                 panel.Click += PagerPanel_Click;
+                pagerLabel.Click += (s, e) => PagerPanel_Click(panel, e); // Chuyển tiếp sự kiện từ Label đến Panel
+                panel.Controls.Add(pagerLabel);
+
                 // Đặt màu dựa trên trạng thái
                 switch (pager.Status)
                 {
                     case 0: // Chưa có đơn
                         panel.BackColor = Color.Green;
+                        pagerLabel.ForeColor = Color.White;
                         break;
                     case 1: // Có đơn, chưa làm xong
                         panel.BackColor = Color.Yellow;
+                        pagerLabel.ForeColor = Color.Red;
                         break;
                     case 2: // Đã làm xong
                         panel.BackColor = Color.Red;
+                        pagerLabel.ForeColor = Color.White;
                         break;
                 }
                 pagerContainerPanel.Controls.Add(panel);
                 pagerPanels.Add(panel);
 
-                xPos += 90; // Khoảng cách giữa các pager
-                if (xPos > pagerContainerPanel.ClientSize.Width - 100)
+                panelCountInRow++;
+                if (panelCountInRow < 10)
                 {
+                    xPos += 130;
+                }
+                else
+                {
+                    panelCountInRow = 0;
                     xPos = 10;
                     yPos += 90;
                 }
             }
         }
 
-        private void PagerPanel_Click(object sender, EventArgs e)
+        public void PagerPanel_Click(object sender, EventArgs e)
         {
             Panel panel = sender as Panel;
             int pagerId = (int)panel.Tag;
             int currentStatus = GetPanelStatus(panel.BackColor);
-            int newStatus = (currentStatus + 1) % 3; // Chuyển tuần tự: 0 -> 1 -> 2 -> 0
-            SetPanelColor(panel, newStatus);
-            pagerService.UpdatePagerStatus(pagerId, newStatus);
+
+            // Chỉ mở OrderDetailForm nếu trạng thái là 1 (có đơn, chưa làm xong)
+            if (currentStatus == 1)
+            {
+                CashierOrderDetailForm orderDetail = new CashierOrderDetailForm(pagerId);
+                orderDetail.ShowDialog();
+                LoadPagers(); // Làm mới để cập nhật trạng thái
+            }
+            if (currentStatus == 2) {
+                DialogResult result = MessageBox.Show("Bạn có chắc muốn reset pager?", "Confirmation", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True"))
+                    {
+                        conn.Open();
+                        string updateQuery = "UPDATE Pagers SET Status = 0 WHERE PagerID = @PagerID";
+                        using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@PagerID", pagerId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    LoadPagers();
+                }
+            }
         }
 
         private int GetPanelStatus(Color color)

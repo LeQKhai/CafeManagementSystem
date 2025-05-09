@@ -110,10 +110,10 @@ namespace CafeManagementSystem
             cashierPagerForm1.Visible = true;
             cashierOrderHistoryFrom1.Visible = false;
 
-            CashierPagerForm pageForm = cashierPagerForm1 as CashierPagerForm;
-            if (pageForm!= null)
+            CashierPagerForm pagerForm = cashierPagerForm1 as CashierPagerForm;
+            if (pagerForm!= null)
             {
-                //pageForm.refreshData();
+                pagerForm.LoadPagers();
             }
         }
     }
