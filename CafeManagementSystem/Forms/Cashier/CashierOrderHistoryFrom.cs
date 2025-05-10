@@ -45,15 +45,15 @@ namespace CafeManagementSystem
             {
                 DataGridViewRow row = dgvOders.Rows[e.RowIndex];
 
-                int cusID = int.Parse(row.Cells["CusID"].Value.ToString());
+                int? cusID = row.Cells["CusID"].Value == DBNull.Value ? (int?)null : int.Parse(row.Cells["OrderID"].Value.ToString());
                 int orderID = int.Parse(row.Cells["OrderID"].Value.ToString());
-
+                tbCusName.Text = "Khách lẻ";
                 tbTotalPrice.Text = row.Cells["TotalPrice"].Value.ToString();
                 tbAmount.Text = row.Cells["Amount"].Value.ToString();
                 tbChange.Text = row.Cells["Change"].Value.ToString();
                 tbDate.Text = row.Cells["OrderDate"].Value.ToString();
 
-                if (cusID != -1)
+                if (cusID.HasValue)
                 {
                     try
                     {

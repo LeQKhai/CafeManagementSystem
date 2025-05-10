@@ -294,7 +294,14 @@ namespace CafeManagementSystem
                     int insertedOrderID = 0;
                     using (SqlCommand cmd = new SqlCommand(insertOrder, connect))
                     {
-                        cmd.Parameters.AddWithValue("@cus_id", cusID); 
+                        if (string.IsNullOrEmpty(tbPhone.Text))
+                        {
+                            cmd.Parameters.AddWithValue("@cus_id", DBNull.Value);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@cus_id", cusID);
+                        }
                         cmd.Parameters.AddWithValue("@total_price", totalPrice);
                         cmd.Parameters.AddWithValue("@order_date", today);
                         cmd.Parameters.AddWithValue("@amount", amount);

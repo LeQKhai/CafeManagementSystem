@@ -12,7 +12,7 @@ namespace CafeManagementSystem
     {
         SqlConnection connect = new SqlConnection(@"Data Source=(LocalDB)\MSSQLlocaldb;Database=cafe;Integrated Security=True");
         public int OrderID { set; get; }
-        public int CusID { set; get; }
+        public int? CusID { set; get; }
         public string TotalPrice { set; get; }
         public string Amount { set; get; }
         public string Change { set; get; }
@@ -39,7 +39,7 @@ namespace CafeManagementSystem
                             OrderData cData = new OrderData();
 
                             cData.OrderID = (int)reader["id"];
-                            cData.CusID = (int)reader["cus_id"];
+                            cData.CusID = reader["cus_id"] == DBNull.Value ? (int?)null : (int)reader["cus_id"];
                             cData.TotalPrice = reader["total_price"].ToString();
                             cData.Amount = reader["amount"].ToString();
                             cData.Change = reader["change"].ToString();
