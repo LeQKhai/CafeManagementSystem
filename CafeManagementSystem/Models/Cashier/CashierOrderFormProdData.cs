@@ -10,7 +10,7 @@ namespace CafeManagementSystem
 {
     class CashierOrderFormProdData
     {
-        public int ID { get; set; } //0 
+        //public int ID { get; set; } //0 
         public string ProductID { get; set; } //1
         public string ProductName { get; set; } //2
         public string Type { get; set; } //3
@@ -43,7 +43,7 @@ namespace CafeManagementSystem
                         {
                             CashierOrderFormProdData apd = new CashierOrderFormProdData();
 
-                            apd.ID = (int)reader["id"];
+                            //apd.ID = (int)reader["id"];
                             apd.ProductID = reader["prod_id"].ToString();
                             apd.ProductName = reader["prod_name"].ToString();
                             apd.Type = reader["prod_type"].ToString();
