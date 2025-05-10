@@ -107,7 +107,7 @@ namespace CafeManagementSystem
                                 using(SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
                                     cmd.Parameters.AddWithValue("@usern", register_username.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@pass", register_username.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@pass", register_password.Text.Trim());
                                     cmd.Parameters.AddWithValue("@image", "");
                                     cmd.Parameters.AddWithValue("@role", "Cashier");
                                     cmd.Parameters.AddWithValue("@status", "Approval");
